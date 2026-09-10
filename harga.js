@@ -2,13 +2,17 @@ const hargaProduk = {
 
     prostBeer:{
         nama:"Prost Beer",
-        harga:55000
+        harga:55000,
+        kupon:1
     },
+
 
     laBold16:{
         nama:"LA Bold 16",
-        harga:50000
+        harga:50000,
+        kupon:1
     },
+
 
     kaos:{
         nama:"Kaos Event",
@@ -22,7 +26,9 @@ const hargaProduk = {
             "4XL":115000
         },
 
-        lenganPanjang:10000
+        lenganPanjang:10000,
+
+        kupon:2
     }
 
 };
