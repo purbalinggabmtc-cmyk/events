@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bold After Dark</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -24,199 +26,523 @@ body{
     padding:20px;
 }
 
+
 .container{
+
     width:100%;
-    max-width:450px;
-    background:rgba(20,20,20,.95);
+    max-width:520px;
+
+    background:rgba(20,20,20,.96);
+
     border:1px solid rgba(255,255,255,.1);
+
     border-radius:20px;
+
     padding:35px;
-    box-shadow:0 20px 60px rgba(0,0,0,.6);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.6);
+
 }
+
+
 
 .logo{
+
     text-align:center;
+
     margin-bottom:30px;
+
 }
+
 
 .logo h1{
+
     font-size:28px;
+
     font-weight:900;
+
     letter-spacing:2px;
+
     color:#e30613;
+
+    white-space:nowrap;
+
 }
+
 
 .logo p{
+
     margin-top:8px;
+
     color:#bbb;
-    letter-spacing:2px;
+
+    letter-spacing:3px;
+
     font-size:13px;
+
 }
+
+
 
 .form-group{
+
     margin-bottom:18px;
+
 }
+
 
 label{
+
     display:block;
+
     margin-bottom:8px;
+
     font-size:14px;
+
     color:#ddd;
+
 }
 
-input{
+
+input,
+select{
+
     width:100%;
-    padding:14px;
+
+    padding:12px;
+
     border-radius:10px;
+
     border:1px solid #333;
+
     background:#111;
+
     color:white;
-    font-size:15px;
+
     outline:none;
+
 }
 
-input:focus{
-    border-color:#e30613;
-}
 
 .checkbox{
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
+
     margin:20px 0;
+
 }
+
 
 .checkbox input{
+
     width:auto;
+
 }
+
+
 
 .purchase{
+
     display:none;
+
     border-top:1px solid #333;
+
     padding-top:20px;
+
 }
 
-.purchase h3{
-    margin-bottom:15px;
-}
 
-.product{
-    background:#111;
-    border:1px solid #292929;
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:10px;
-}
 
-.product label{
-    display:flex;
-    justify-content:space-between;
+.product-row{
+
+    display:grid;
+
+    grid-template-columns:1.4fr .7fr .8fr;
+
+    gap:10px;
+
     align-items:center;
-    margin:0;
+
+    background:#111;
+
+    border:1px solid #292929;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+
 }
 
-.product input{
-    width:auto;
+
+.product-row input{
+
+    width:100%;
+
 }
+
+
+
+.price{
+
+    color:#aaa;
+
+    font-size:13px;
+
+}
+
+
+
+.kaos-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr .5fr .8fr;
+
+    gap:8px;
+
+    background:#111;
+
+    border:1px solid #292929;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.kaos-row input,
+.kaos-row select{
+
+    font-size:13px;
+
+}
+
+
+
+.subtotal{
+
+    font-size:13px;
+
+}
+
+
+
+.total-box{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:#111;
+
+    font-size:18px;
+
+}
+
+
 
 button{
+
     width:100%;
+
     margin-top:25px;
+
     padding:15px;
+
     border:none;
+
     border-radius:12px;
+
     background:#e30613;
+
     color:white;
-    font-size:16px;
+
     font-weight:bold;
+
     cursor:pointer;
-    transition:.3s;
+
 }
+
 
 button:hover{
+
     background:#ff1b2d;
+
 }
 
+
+
 .footer{
+
     text-align:center;
+
     margin-top:20px;
+
     color:#777;
+
     font-size:12px;
+
 }
+
+
+@media(max-width:500px){
+
+.logo h1{
+
+    font-size:22px;
+
+}
+
+.kaos-row{
+
+    grid-template-columns:1fr 1fr;
+
+}
+
+}
+
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="container">
 
+
 <div class="logo">
-    <h1>BOLD AFTER DARK</h1>
-    <p>THE EVENT</p>
+
+<h1>BOLD AFTER DARK</h1>
+
+<p>THE EVENT</p>
+
 </div>
+
 
 
 <form id="registerForm">
 
+
 <div class="form-group">
+
 <label>Nama</label>
-<input type="text" id="nama" placeholder="Masukkan nama" required>
+
+<input 
+type="text"
+id="nama"
+placeholder="Masukkan nama"
+required>
+
 </div>
+
 
 
 <div class="form-group">
+
 <label>Nomor WhatsApp</label>
-<input type="tel" id="wa" placeholder="08xxxxxxxxxx" required>
+
+<input 
+type="tel"
+id="wa"
+placeholder="08xxxxxxxxxx"
+required>
+
 </div>
+
 
 
 <div class="checkbox">
-<input type="checkbox" id="buyCheck">
-<label for="buyCheck">
+
+<input 
+type="checkbox"
+id="buyCheck">
+
+<label>
 Saya ingin mendapat kupon undian
 </label>
+
 </div>
+
+
 
 
 <div class="purchase" id="purchaseBox">
 
+
 <h3>Pilihan Produk</h3>
 
-<div class="product">
-<label>
-<span>Prost Beer</span>
-<span>
-<input type="checkbox">
-Rp55.000
+
+<br>
+
+
+<div class="product-row">
+
+
+<div>
+
+<div>
+Prost Beer
+</div>
+
+<div class="price" id="prostPrice"></div>
+
+</div>
+
+
+<input 
+type="number"
+id="prostQty"
+min="0"
+value="0">
+
+
+<div 
+class="subtotal"
+id="prostSubtotal">
+
+Rp0
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="product-row">
+
+
+<div>
+
+<div>
+LA Bold 16
+</div>
+
+<div class="price" id="laBoldPrice"></div>
+
+</div>
+
+
+<input 
+type="number"
+id="laBoldQty"
+min="0"
+value="0">
+
+
+<div 
+class="subtotal"
+id="laBoldSubtotal">
+
+Rp0
+
+</div>
+
+
+</div>
+
+
+
+
+<h3 style="margin-top:25px">
+Kaos Event
+</h3>
+
+
+<div id="kaosContainer">
+
+
+<div class="kaos-row">
+
+
+<select class="sleeve" onchange="cekKaos()">
+
+<option value="">
+Sleeve
+</option>
+
+<option value="pendek">
+Lengan Pendek
+</option>
+
+<option value="panjang">
+Lengan Panjang
+</option>
+
+</select>
+
+
+
+<select class="ukuran" onchange="cekKaos()">
+
+<option value="">
+Ukuran
+</option>
+
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>2XL</option>
+<option>3XL</option>
+<option>4XL</option>
+
+</select>
+
+
+
+<input 
+type="number"
+class="kaosQty"
+value="1"
+min="1"
+oninput="hitungTotal()">
+
+
+
+<div class="subtotal">
+Rp0
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="total-box">
+
+Total:
+<span id="total">
+Rp0
 </span>
-</label>
-</div>
 
 
-<div class="product">
-<label>
-<span>LA Bold 16</span>
-<span>
-<input type="checkbox">
-Rp50.000
-</span>
-</label>
-</div>
-
-
-<div class="product">
-<label>
-<span>Kaos Event</span>
-<span>
-<input type="checkbox">
-Mulai Rp100.000
-</span>
-</label>
 </div>
 
 
 </div>
+
+
 
 
 <button type="submit">
@@ -227,49 +553,299 @@ REGISTER
 </form>
 
 
+
 <div class="footer">
+
 © Bold After Dark
+
 </div>
 
 
 </div>
+
+
+
+
+
+<script src="harga.js"></script>
 
 
 <script>
 
-const buyCheck = document.getElementById("buyCheck");
-const purchaseBox = document.getElementById("purchaseBox");
+
+const buyCheck=document.getElementById("buyCheck");
+
+const purchaseBox=document.getElementById("purchaseBox");
 
 
-buyCheck.addEventListener("change",function(){
 
-    if(this.checked){
-        purchaseBox.style.display="block";
-    }else{
-        purchaseBox.style.display="none";
-    }
+buyCheck.addEventListener("change",()=>{
+
+purchaseBox.style.display=
+buyCheck.checked
+?
+"block"
+:
+"none";
+
 
 });
 
 
-document.getElementById("registerForm")
+
+
+function rupiah(value){
+
+return "Rp"+value.toLocaleString("id-ID");
+
+}
+
+
+
+function hitungTotal(){
+
+
+let total=0;
+
+
+
+let prost=
+Number(document.getElementById("prostQty").value)
+*
+hargaProduk.prostBeer.harga;
+
+
+
+let laBold=
+Number(document.getElementById("laBoldQty").value)
+*
+hargaProduk.laBold16.harga;
+
+
+
+document.getElementById("prostSubtotal")
+.innerHTML=rupiah(prost);
+
+
+
+document.getElementById("laBoldSubtotal")
+.innerHTML=rupiah(laBold);
+
+
+
+total+=prost+laBold;
+
+
+
+
+document.querySelectorAll(".kaos-row")
+.forEach(row=>{
+
+
+let sleeve=
+row.querySelector(".sleeve").value;
+
+
+let ukuran=
+row.querySelector(".ukuran").value;
+
+
+let qty=
+Number(row.querySelector(".kaosQty").value);
+
+
+
+let subtotalBox=
+row.querySelector(".subtotal");
+
+
+
+if(ukuran){
+
+
+let harga=
+hargaProduk.kaos.ukuran[ukuran];
+
+
+
+if(sleeve==="panjang"){
+
+harga+=hargaProduk.kaos.lenganPanjang;
+
+}
+
+
+
+let subtotal=
+harga*qty;
+
+
+subtotalBox.innerHTML=
+rupiah(subtotal);
+
+
+
+total+=subtotal;
+
+
+
+}
+
+
+
+});
+
+
+
+document.getElementById("total")
+.innerHTML=
+rupiah(total);
+
+
+}
+
+
+
+
+
+function cekKaos(){
+
+
+let rows=
+document.querySelectorAll(".kaos-row");
+
+
+let last=
+rows[rows.length-1];
+
+
+let ukuran=
+last.querySelector(".ukuran").value;
+
+
+
+if(
+ukuran &&
+rows.length<3
+){
+
+
+let div=document.createElement("div");
+
+
+div.className="kaos-row";
+
+
+div.innerHTML=`
+
+<select class="sleeve" onchange="hitungTotal()">
+
+<option value="">
+Sleeve
+</option>
+
+<option value="pendek">
+Lengan Pendek
+</option>
+
+<option value="panjang">
+Lengan Panjang
+</option>
+
+</select>
+
+
+<select class="ukuran" onchange="cekKaos()">
+
+<option value="">
+Ukuran
+</option>
+
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>2XL</option>
+<option>3XL</option>
+<option>4XL</option>
+
+</select>
+
+
+<input
+type="number"
+class="kaosQty"
+value="1"
+min="1"
+oninput="hitungTotal()">
+
+
+
+<div class="subtotal">
+Rp0
+</div>
+
+`;
+
+
+document
+.getElementById("kaosContainer")
+.appendChild(div);
+
+
+}
+
+
+
+hitungTotal();
+
+
+}
+
+
+
+
+
+document.getElementById("prostQty")
+.addEventListener("input",hitungTotal);
+
+
+document.getElementById("laBoldQty")
+.addEventListener("input",hitungTotal);
+
+
+
+document.getElementById("prostPrice")
+.innerHTML=
+rupiah(hargaProduk.prostBeer.harga);
+
+
+
+document.getElementById("laBoldPrice")
+.innerHTML=
+rupiah(hargaProduk.laBold16.harga);
+
+
+
+
+
+document
+.getElementById("registerForm")
 .addEventListener("submit",function(e){
 
-    e.preventDefault();
-
-    const nama=document.getElementById("nama").value;
-    const wa=document.getElementById("wa").value;
+e.preventDefault();
 
 
-    alert(
-        "Registrasi berhasil\n\n"+
-        "Nama: "+nama+
-        "\nWhatsApp: "+wa
-    );
+alert(
+"Registrasi berhasil"
+);
+
 
 });
 
+
+
 </script>
+
 
 </body>
 </html>
