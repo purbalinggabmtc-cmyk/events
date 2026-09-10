@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bold After Dark</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top,#3a0000,#050505 55%);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:450px;
+    background:rgba(20,20,20,.95);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.logo h1{
+    font-size:42px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#e30613;
+}
+
+.logo p{
+    margin-top:8px;
+    color:#bbb;
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    color:#ddd;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #333;
+    background:#111;
+    color:white;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#e30613;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.checkbox input{
+    width:auto;
+}
+
+.purchase{
+    display:none;
+    border-top:1px solid #333;
+    padding-top:20px;
+}
+
+.purchase h3{
+    margin-bottom:15px;
+}
+
+.product{
+    background:#111;
+    border:1px solid #292929;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+.product label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:0;
+}
+
+.product input{
+    width:auto;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#e30613;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#ff1b2d;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#777;
+    font-size:12px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+    <h1>BOLD</h1>
+    <p>AFTER DARK EVENT</p>
+</div>
+
+
+<form id="registerForm">
+
+<div class="form-group">
+<label>Nama Lengkap</label>
+<input type="text" id="nama" placeholder="Masukkan nama" required>
+</div>
+
+
+<div class="form-group">
+<label>Nomor WhatsApp</label>
+<input type="tel" id="wa" placeholder="08xxxxxxxxxx" required>
+</div>
+
+
+<div class="checkbox">
+<input type="checkbox" id="buyCheck">
+<label for="buyCheck">
+Saya ingin membeli produk
+</label>
+</div>
+
+
+<div class="purchase" id="purchaseBox">
+
+<h3>Pilihan Produk</h3>
+
+<div class="product">
+<label>
+<span>Prost Beer</span>
+<span>
+<input type="checkbox">
+Rp55.000
+</span>
+</label>
+</div>
+
+
+<div class="product">
+<label>
+<span>LA Bold 16</span>
+<span>
+<input type="checkbox">
+Rp50.000
+</span>
+</label>
+</div>
+
+
+<div class="product">
+<label>
+<span>Kaos Event</span>
+<span>
+<input type="checkbox">
+Mulai Rp100.000
+</span>
+</label>
+</div>
+
+
+</div>
+
+
+<button type="submit">
+REGISTER
+</button>
+
+
+</form>
+
+
+<div class="footer">
+© Bold After Dark
+</div>
+
+
+</div>
+
+
+<script>
+
+const buyCheck = document.getElementById("buyCheck");
+const purchaseBox = document.getElementById("purchaseBox");
+
+
+buyCheck.addEventListener("change",function(){
+
+    if(this.checked){
+        purchaseBox.style.display="block";
+    }else{
+        purchaseBox.style.display="none";
+    }
+
+});
+
+
+document.getElementById("registerForm")
+.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const nama=document.getElementById("nama").value;
+    const wa=document.getElementById("wa").value;
+
+
+    alert(
+        "Registrasi berhasil\n\n"+
+        "Nama: "+nama+
+        "\nWhatsApp: "+wa
+    );
+
+});
+
+</script>
+
+</body>
+</html>
