@@ -46,7 +46,6 @@ body{
 }
 
 
-
 .logo{
 
     text-align:center;
@@ -82,7 +81,6 @@ body{
     font-size:13px;
 
 }
-
 
 
 .form-group{
@@ -203,9 +201,11 @@ select{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr .5fr .8fr;
+    grid-template-columns:1.15fr .7fr .4fr .7fr;
 
     gap:8px;
+
+    align-items:center;
 
     background:#111;
 
@@ -224,15 +224,25 @@ select{
 .kaos-row input,
 .kaos-row select{
 
-    font-size:13px;
+    font-size:12px;
+
+    padding:10px 8px;
 
 }
 
 
 
-.subtotal{
+.kaos-row .subtotal{
 
-    font-size:13px;
+    font-size:12px;
+
+    color:#ddd;
+
+    text-align:center;
+
+    white-space:nowrap;
+
+    line-height:1;
 
 }
 
@@ -277,6 +287,7 @@ button{
 }
 
 
+
 button:hover{
 
     background:#ff1b2d;
@@ -298,6 +309,7 @@ button:hover{
 }
 
 
+
 @media(max-width:500px){
 
 .logo h1{
@@ -306,13 +318,22 @@ button:hover{
 
 }
 
+
+.container{
+
+    padding:25px;
+
+}
+
+
 .kaos-row{
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.1fr .7fr .35fr .65fr;
 
 }
 
 }
+
 
 
 </style>
@@ -335,7 +356,6 @@ button:hover{
 </div>
 
 
-
 <form id="registerForm">
 
 
@@ -343,7 +363,7 @@ button:hover{
 
 <label>Nama</label>
 
-<input 
+<input
 type="text"
 id="nama"
 placeholder="Masukkan nama"
@@ -352,12 +372,11 @@ required>
 </div>
 
 
-
 <div class="form-group">
 
 <label>Nomor WhatsApp</label>
 
-<input 
+<input
 type="tel"
 id="wa"
 placeholder="08xxxxxxxxxx"
@@ -366,10 +385,9 @@ required>
 </div>
 
 
-
 <div class="checkbox">
 
-<input 
+<input
 type="checkbox"
 id="buyCheck">
 
@@ -380,13 +398,10 @@ Saya ingin mendapat kupon undian
 </div>
 
 
-
-
 <div class="purchase" id="purchaseBox">
 
 
 <h3>Pilihan Produk</h3>
-
 
 <br>
 
@@ -405,14 +420,14 @@ Prost Beer
 </div>
 
 
-<input 
+<input
 type="number"
 id="prostQty"
 min="0"
 value="0">
 
 
-<div 
+<div
 class="subtotal"
 id="prostSubtotal">
 
@@ -422,7 +437,6 @@ Rp0
 
 
 </div>
-
 
 
 
@@ -440,14 +454,14 @@ LA Bold 16
 </div>
 
 
-<input 
+<input
 type="number"
 id="laBoldQty"
 min="0"
 value="0">
 
 
-<div 
+<div
 class="subtotal"
 id="laBoldSubtotal">
 
@@ -457,8 +471,6 @@ Rp0
 
 
 </div>
-
-
 
 
 <h3 style="margin-top:25px">
@@ -489,276 +501,10 @@ Panjang
 </select>
 
 
-
 <select class="ukuran" onchange="cekKaos()">
 
 <option value="">
-Size
-</option>
-
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>2XL</option>
-<option>3XL</option>
-<option>4XL</option>
-
-</select>
-
-
-
-<input 
-type="number"
-class="kaosQty"
-value="1"
-min="1"
-oninput="hitungTotal()">
-
-
-
-<div class="subtotal">
-Rp0
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-<div class="total-box">
-
-Total:
-<span id="total">
-Rp0
-</span>
-
-
-</div>
-
-
-</div>
-
-
-
-
-<button type="submit">
-REGISTER
-</button>
-
-
-</form>
-
-
-
-<div class="footer">
-
-© Bold After Dark
-
-</div>
-
-
-</div>
-
-
-
-
-
-<script src="harga.js"></script>
-
-
-<script>
-
-
-const buyCheck=document.getElementById("buyCheck");
-
-const purchaseBox=document.getElementById("purchaseBox");
-
-
-
-buyCheck.addEventListener("change",()=>{
-
-purchaseBox.style.display=
-buyCheck.checked
-?
-"block"
-:
-"none";
-
-
-});
-
-
-
-
-function rupiah(value){
-
-return "Rp"+value.toLocaleString("id-ID");
-
-}
-
-
-
-function hitungTotal(){
-
-
-let total=0;
-
-
-
-let prost=
-Number(document.getElementById("prostQty").value)
-*
-hargaProduk.prostBeer.harga;
-
-
-
-let laBold=
-Number(document.getElementById("laBoldQty").value)
-*
-hargaProduk.laBold16.harga;
-
-
-
-document.getElementById("prostSubtotal")
-.innerHTML=rupiah(prost);
-
-
-
-document.getElementById("laBoldSubtotal")
-.innerHTML=rupiah(laBold);
-
-
-
-total+=prost+laBold;
-
-
-
-
-document.querySelectorAll(".kaos-row")
-.forEach(row=>{
-
-
-let sleeve=
-row.querySelector(".sleeve").value;
-
-
-let ukuran=
-row.querySelector(".ukuran").value;
-
-
-let qty=
-Number(row.querySelector(".kaosQty").value);
-
-
-
-let subtotalBox=
-row.querySelector(".subtotal");
-
-
-
-if(ukuran){
-
-
-let harga=
-hargaProduk.kaos.ukuran[ukuran];
-
-
-
-if(sleeve==="panjang"){
-
-harga+=hargaProduk.kaos.lenganPanjang;
-
-}
-
-
-
-let subtotal=
-harga*qty;
-
-
-subtotalBox.innerHTML=
-rupiah(subtotal);
-
-
-
-total+=subtotal;
-
-
-
-}
-
-
-
-});
-
-
-
-document.getElementById("total")
-.innerHTML=
-rupiah(total);
-
-
-}
-
-
-
-
-
-function cekKaos(){
-
-
-let rows=
-document.querySelectorAll(".kaos-row");
-
-
-let last=
-rows[rows.length-1];
-
-
-let ukuran=
-last.querySelector(".ukuran").value;
-
-
-
-if(
-ukuran &&
-rows.length<3
-){
-
-
-let div=document.createElement("div");
-
-
-div.className="kaos-row";
-
-
-div.innerHTML=`
-
-<select class="sleeve" onchange="hitungTotal()">
-
-<option value="">
-Lengan
-</option>
-
-<option value="pendek">
-Pendek
-</option>
-
-<option value="panjang">
-Panjang
-</option>
-
-</select>
-
-
-<select class="ukuran" onchange="cekKaos()">
-
-<option value="">
-Size
+Uk.
 </option>
 
 <option>M</option>
@@ -784,12 +530,324 @@ oninput="hitungTotal()">
 Rp0
 </div>
 
+
+</div>
+
+
+</div>
+<div class="total-box">
+
+Total:
+<span id="total">
+Rp0
+</span>
+
+</div>
+
+
+</div>
+
+
+
+<button type="submit">
+REGISTER
+</button>
+
+
+</form>
+
+
+
+<div class="footer">
+
+© Bold After Dark
+
+</div>
+
+
+</div>
+
+
+
+<script src="harga.js"></script>
+
+
+<script>
+
+
+const buyCheck=document.getElementById("buyCheck");
+
+const purchaseBox=document.getElementById("purchaseBox");
+
+
+
+buyCheck.addEventListener("change",()=>{
+
+purchaseBox.style.display=
+buyCheck.checked
+?
+"block"
+:
+"none";
+
+});
+
+
+
+
+
+function rupiah(value){
+
+return "Rp"+value.toLocaleString("id-ID");
+
+}
+
+
+
+
+
+function hitungTotal(){
+
+
+let total=0;
+
+
+
+let prost=
+
+Number(document.getElementById("prostQty").value)
+
+*
+
+hargaProduk.prostBeer.harga;
+
+
+
+let laBold=
+
+Number(document.getElementById("laBoldQty").value)
+
+*
+
+hargaProduk.laBold16.harga;
+
+
+
+document.getElementById("prostSubtotal")
+
+.innerHTML=
+
+rupiah(prost);
+
+
+
+document.getElementById("laBoldSubtotal")
+
+.innerHTML=
+
+rupiah(laBold);
+
+
+
+total+=prost+laBold;
+
+
+
+
+
+document.querySelectorAll(".kaos-row")
+
+.forEach(row=>{
+
+
+let sleeve=
+
+row.querySelector(".sleeve").value;
+
+
+
+let ukuran=
+
+row.querySelector(".ukuran").value;
+
+
+
+let qty=
+
+Number(row.querySelector(".kaosQty").value);
+
+
+
+let subtotalBox=
+
+row.querySelector(".subtotal");
+
+
+
+
+if(ukuran){
+
+
+let harga=
+
+hargaProduk.kaos.ukuran[ukuran];
+
+
+
+if(sleeve==="panjang"){
+
+harga+=hargaProduk.kaos.lenganPanjang;
+
+}
+
+
+
+let subtotal=
+
+harga*qty;
+
+
+
+subtotalBox.innerHTML=
+
+rupiah(subtotal);
+
+
+
+total+=subtotal;
+
+
+
+}
+
+else{
+
+
+subtotalBox.innerHTML="Rp0";
+
+
+}
+
+
+
+});
+
+
+
+
+document.getElementById("total")
+
+.innerHTML=
+
+rupiah(total);
+
+
+
+}
+
+
+
+
+
+
+function cekKaos(){
+
+
+let rows=
+
+document.querySelectorAll(".kaos-row");
+
+
+
+let last=
+
+rows[rows.length-1];
+
+
+
+let ukuran=
+
+last.querySelector(".ukuran").value;
+
+
+
+if(
+
+ukuran &&
+
+rows.length<3
+
+){
+
+
+
+let div=document.createElement("div");
+
+
+
+div.className="kaos-row";
+
+
+
+div.innerHTML=`
+
+<select class="sleeve" onchange="hitungTotal()">
+
+<option value="">
+Lengan
+</option>
+
+<option value="pendek">
+Pendek
+</option>
+
+<option value="panjang">
+Panjang
+</option>
+
+</select>
+
+
+<select class="ukuran" onchange="cekKaos()">
+
+<option value="">
+Uk.
+</option>
+
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>2XL</option>
+<option>3XL</option>
+<option>4XL</option>
+
+</select>
+
+
+
+<input
+type="number"
+class="kaosQty"
+value="1"
+min="1"
+oninput="hitungTotal()">
+
+
+
+<div class="subtotal">
+Rp0
+</div>
+
 `;
 
 
+
 document
+
 .getElementById("kaosContainer")
+
 .appendChild(div);
+
 
 
 }
@@ -799,48 +857,99 @@ document
 hitungTotal();
 
 
+
 }
 
 
 
 
 
-document.getElementById("prostQty")
-.addEventListener("input",hitungTotal);
+
+document
+
+.getElementById("prostQty")
+
+.addEventListener(
+
+"input",
+
+hitungTotal
+
+);
 
 
-document.getElementById("laBoldQty")
-.addEventListener("input",hitungTotal);
+
+document
+
+.getElementById("laBoldQty")
+
+.addEventListener(
+
+"input",
+
+hitungTotal
+
+);
+
+
+
 
 
 
 document.getElementById("prostPrice")
+
 .innerHTML=
-rupiah(hargaProduk.prostBeer.harga);
+
+rupiah(
+
+hargaProduk.prostBeer.harga
+
+);
+
 
 
 
 document.getElementById("laBoldPrice")
+
 .innerHTML=
-rupiah(hargaProduk.laBold16.harga);
+
+rupiah(
+
+hargaProduk.laBold16.harga
+
+);
+
 
 
 
 
 
 document
+
 .getElementById("registerForm")
-.addEventListener("submit",function(e){
+
+.addEventListener(
+
+"submit",
+
+function(e){
+
 
 e.preventDefault();
 
 
+
 alert(
+
 "Registrasi berhasil"
+
 );
 
 
-});
+
+}
+
+);
 
 
 
@@ -848,4 +957,5 @@ alert(
 
 
 </body>
+
 </html>
