@@ -1501,6 +1501,39 @@ function ambilDataPembelian(){
     return pembelian;
 
 }
+
+
+function generateKupon(jumlah){
+
+    let kupon = [];
+
+
+    while(
+        kupon.length < jumlah
+    ){
+
+        let nomor =
+        Math.floor(
+            1000 +
+            Math.random()*9000
+        ).toString();
+
+
+
+        if(
+            !kupon.includes(nomor)
+        ){
+
+            kupon.push(nomor);
+
+        }
+
+    }
+
+
+    return kupon;
+
+}
     
 document
 .getElementById("registerForm")
@@ -1533,6 +1566,16 @@ let nomorRegistrasi =
 generateNomorRegistrasi();
 
 
+let jumlahKupon =
+
+Number(
+    document
+    .getElementById("jumlahKupon")
+    .innerText
+);
+
+
+
 let dataPeserta = {
 
     registrasi:
@@ -1558,14 +1601,13 @@ let dataPeserta = {
 
 
     kupon:
-    Number(
-        document
-        .getElementById("jumlahKupon")
-        .innerText
-    )
+    jumlahKupon,
+
+
+    nomorKupon:
+    generateKupon(jumlahKupon)
 
 };
-
 
 console.log(dataPeserta);
 
