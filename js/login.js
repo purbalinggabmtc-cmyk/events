@@ -97,7 +97,7 @@ result.peserta
 
 window.location.href =
 
-"README.md";
+"dashboard.html";
 
 
 
