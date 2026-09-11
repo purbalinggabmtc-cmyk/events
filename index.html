@@ -138,10 +138,17 @@ BOLD AFTER DARK | BOLD RIDERS
 
                 type="tel"
 
+                inputmode="numeric"
+
+                pattern="[0-9]*"
+
+                maxlength="15"
+
                 placeholder="08xxxxxxxxxx"
 
-                required>
+                oninput="this.value=this.value.replace(/[^0-9]/g,'')"
 
+                required>
 
             </div>
 
