@@ -1644,6 +1644,18 @@ function tampilkanHasilRegistrasi(data){
     document
     .getElementById("hasilRegistrasi")
     .style.display="block";
+    
+document
+.getElementById("hasilRegistrasi")
+.innerHTML = `
+<h2 style="color:white">
+TEST HASIL
+</h2>
+
+<h1 style="color:red">
+${data.registrasi}
+</h1>
+`;
 
     document
     .getElementById("hasilNomor")
