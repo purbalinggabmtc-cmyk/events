@@ -1,56 +1,37 @@
-const peserta = JSON.parse(
-
-localStorage.getItem("peserta")
-
-);
+// ==========================
+// CART SYSTEM
+// ==========================
 
 
-
-if(!peserta){
-
-
-window.location.href =
-"index.html";
-
-
-}
+let cart = [];
 
 
 
 
-
-function buyProduct(kode){
-
-
-
-const produk =
-hargaProduk[kode];
+// ==========================
+// ADD PRODUCT
+// ==========================
 
 
+function addProduct(kode){
 
 
-const konfirmasi =
-confirm(
-
-`Beli ${produk.nama}
-Harga Rp${produk.harga.toLocaleString()}
-Mendapat ${produk.kupon} nomor undian`
-
-);
+    const produk = hargaProduk[kode];
 
 
+    cart.push({
 
-if(konfirmasi){
+        nama:produk.nama,
 
+        harga:produk.harga,
 
-alert(
-"Pesanan dibuat"
-);
+        kupon:produk.kupon
+
+    });
 
 
 
-}
-
+    updateCart();
 
 
 }
@@ -59,55 +40,263 @@ alert(
 
 
 
-
-function buyKaos(){
-
-
-
-const ukuran =
-
-document.getElementById("ukuran").value;
+// ==========================
+// ADD KAOS
+// ==========================
 
 
+function addKaos(){
 
-const harga =
 
-hargaProduk.kaos.ukuran[ukuran];
+    const ukuran =
+    document.getElementById("ukuran").value;
 
 
 
-
-
-const kupon =
-
-hargaProduk.kaos.kupon;
+    const lengan =
+    document.getElementById("lengan").value;
 
 
 
-const konfirmasi =
+    // cek jumlah kaos
 
-confirm(
+    const jumlahKaos = cart.filter(
 
-`Kaos ukuran ${ukuran}
+        item => item.jenis === "kaos"
 
-Harga Rp${harga.toLocaleString()}
-
-Mendapat ${kupon} nomor undian`
-
-);
+    ).length;
 
 
 
-if(konfirmasi){
+    if(jumlahKaos >= 3){
 
 
-alert(
-"Pesanan dibuat"
-);
+        alert(
+        "Maksimal pembelian kaos 3 pcs"
+        );
+
+
+        return;
+
+    }
+
+
+
+
+
+    let harga =
+
+    hargaProduk.kaos.ukuran[ukuran];
+
+
+
+
+
+    if(lengan === "panjang"){
+
+
+        harga +=
+        hargaProduk.kaos.lenganPanjang;
+
+
+    }
+
+
+
+
+
+    cart.push({
+
+
+        jenis:"kaos",
+
+
+        nama:
+
+        `Kaos ${ukuran} Lengan ${lengan}`,
+
+
+        harga:
+
+
+        harga,
+
+
+        kupon:
+
+        hargaProduk.kaos.kupon
+
+
+
+    });
+
+
+
+
+
+    updateCart();
+
 
 
 }
 
+
+
+
+
+
+// ==========================
+// UPDATE CART
+// ==========================
+
+
+function updateCart(){
+
+
+
+    const cartBox =
+
+    document.getElementById("cart");
+
+
+
+    const totalBox =
+
+    document.getElementById("total");
+
+
+
+    const kuponBox =
+
+    document.getElementById("kupon");
+
+
+
+
+
+    if(cart.length === 0){
+
+
+        cartBox.innerHTML =
+
+        "Belum ada pesanan";
+
+
+        totalBox.innerHTML =
+        "Rp0";
+
+
+        kuponBox.innerHTML =
+        "0";
+
+
+        return;
+
+
+    }
+
+
+
+
+
+    let total = 0;
+
+    let kupon = 0;
+
+
+
+    let html = "";
+
+
+
+
+
+    cart.forEach((item,index)=>{
+
+
+        total += item.harga;
+
+
+        kupon += item.kupon;
+
+
+
+
+
+        html += `
+
+
+        <div class="cart-item">
+
+
+            <span>
+
+            ${item.nama}
+
+            </span>
+
+
+            <strong>
+
+            Rp${item.harga.toLocaleString()}
+
+            </strong>
+
+
+            <button onclick="removeItem(${index})">
+
+            ×
+
+            </button>
+
+
+        </div>
+
+
+        `;
+
+
+
+    });
+
+
+
+
+
+    cartBox.innerHTML = html;
+
+
+
+    totalBox.innerHTML =
+
+    "Rp" + total.toLocaleString();
+
+
+
+    kuponBox.innerHTML =
+
+    kupon + " Nomor";
+
+
+
+}
+
+
+
+
+
+// ==========================
+// REMOVE ITEM
+// ==========================
+
+
+function removeItem(index){
+
+
+    cart.splice(index,1);
+
+
+    updateCart();
 
 
 }
