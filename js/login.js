@@ -1,5 +1,5 @@
 const API_URL =
-""https://script.google.com/macros/s/AKfycbx17qq0wtAR2b6KCwyASYRV6zszcLeDcXVKSmIKP7yJfwlp_Lkeha1e8HBxzrGqVCag/exec";
+"https://script.google.com/macros/s/AKfycbxBKVNooM6RhXSc2aHW_KZndTjWCD3_5KSdQLId6RosA1gFP5aCeOxNfYAGTDwYncL/exec";
 
 
 
@@ -17,6 +17,10 @@ e.preventDefault();
 
 
 
+console.log("LOGIN BUTTON CLICKED");
+
+
+
 const data = {
 
 
@@ -24,12 +28,10 @@ action:"login",
 
 
 whatsapp:
-
 document.getElementById("whatsapp").value.trim(),
 
 
 pin:
-
 document.getElementById("pin").value.trim()
 
 
@@ -37,11 +39,16 @@ document.getElementById("pin").value.trim()
 
 
 
+console.log("DATA KIRIM:", data);
 
 
-const response =
 
-await fetch(
+
+
+try{
+
+
+const response = await fetch(
 
 API_URL,
 
@@ -49,9 +56,7 @@ API_URL,
 
 method:"POST",
 
-body:
-
-JSON.stringify(data)
+body:JSON.stringify(data)
 
 }
 
@@ -60,22 +65,45 @@ JSON.stringify(data)
 
 
 
+console.log(
+"STATUS SERVER:",
+response.status
+);
+
+
+
+const text =
+await response.text();
+
+
+
+console.log(
+"SERVER RESPONSE:",
+text
+);
+
+
 
 const result =
-
-await response.json();
-
+JSON.parse(text);
 
 
 
+console.log(
+"HASIL LOGIN:",
+result
+);
 
-console.log(result);
 
 
 
 
+if(result.sukses === true){
 
-if(result.sukses){
+
+console.log(
+"LOGIN BERHASIL"
+);
 
 
 
@@ -84,9 +112,7 @@ localStorage.setItem(
 "peserta",
 
 JSON.stringify(
-
 result.peserta
-
 )
 
 );
@@ -94,9 +120,14 @@ result.peserta
 
 
 
+console.log(
+"SIMPAN LOCAL STORAGE"
+);
+
+
+
 
 window.location.href =
-
 "dashboard.html";
 
 
@@ -107,6 +138,26 @@ else{
 
 
 alert(result.pesan);
+
+
+}
+
+
+
+}
+
+catch(error){
+
+
+console.error(
+"ERROR LOGIN:",
+error
+);
+
+
+alert(
+"Koneksi gagal"
+);
 
 
 }
