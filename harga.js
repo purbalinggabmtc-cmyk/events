@@ -486,7 +486,3 @@ function(e){
 
 
 });
-
-
-
-</script>
