@@ -369,7 +369,7 @@ button:hover{
 
     text-align:center;
 
-    margin-top:120px;
+    margin-top:1200px;
 
     color:#777;
 
@@ -1498,18 +1498,65 @@ Masuk
 
 </form>
     
-<hr>
 
-<div style="border:1px solid red;padding:10px">
-
-TES LOGIN MUNCUL
-
-</div>
     
 </div>
 
     
 </div>
+
+
+<div 
+id="loginBox"
+style="display:none">
+
+
+<h3>
+Masuk Peserta
+</h3>
+
+
+<div class="form-group">
+
+<label>
+Nomor WhatsApp
+</label>
+
+<input
+type="tel"
+id="loginWa"
+placeholder="08xxxxxxxxxx">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+PIN (6 angka)
+</label>
+
+<input
+type="password"
+id="loginPin"
+maxlength="6"
+inputmode="numeric"
+placeholder="PIN">
+
+</div>
+
+
+<button
+type="button"
+onclick="loginPeserta()">
+
+Masuk
+
+</button>
+
+
+<div id="hasilLogin"></div>
+
 
 
 <div id="hasilRegistrasi" style="display:none">
@@ -1958,57 +2005,6 @@ console.log(dataPeserta);
 });
 
 </script>
-
-<div 
-id="loginBox"
-style="display:none">
-
-
-<h3>
-Masuk Peserta
-</h3>
-
-
-<div class="form-group">
-
-<label>
-Nomor WhatsApp
-</label>
-
-<input
-type="tel"
-id="loginWa"
-placeholder="08xxxxxxxxxx">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-PIN (6 angka)
-</label>
-
-<input
-type="password"
-id="loginPin"
-maxlength="6"
-inputmode="numeric"
-placeholder="PIN">
-
-</div>
-
-
-<button
-type="button"
-onclick="loginPeserta()">
-
-Masuk
-
-</button>
-
-
-<div id="hasilLogin"></div>
 
 </div>
     
