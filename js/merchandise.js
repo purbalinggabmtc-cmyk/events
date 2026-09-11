@@ -1,37 +1,44 @@
-// ==========================
-// CART SYSTEM
-// ==========================
-
-
 let cart = [];
 
 
 
 
-// ==========================
+// =========================
 // ADD PRODUCT
-// ==========================
+// =========================
 
 
 function addProduct(kode){
 
 
-    const produk = hargaProduk[kode];
-
-
-    cart.push({
-
-        nama:produk.nama,
-
-        harga:produk.harga,
-
-        kupon:produk.kupon
-
-    });
+const produk =
+hargaProduk[kode];
 
 
 
-    updateCart();
+let qty = 1;
+
+
+
+if(kode==="prostBeer"){
+
+
+qty =
+parseInt(
+document.getElementById("qtyProst").value
+);
+
+
+}
+
+
+if(kode==="laBold16"){
+
+
+qty =
+parseInt(
+document.getElementById("qtyLaBold").value
+);
 
 
 }
@@ -40,101 +47,200 @@ function addProduct(kode){
 
 
 
-// ==========================
+const existing =
+cart.find(
+item=>item.nama===produk.nama
+);
+
+
+
+
+if(existing){
+
+
+existing.qty += qty;
+
+
+}
+
+else{
+
+
+cart.push({
+
+
+nama:produk.nama,
+
+
+harga:produk.harga,
+
+
+qty:qty,
+
+
+kupon:produk.kupon
+
+
+});
+
+
+}
+
+
+
+updateCart();
+
+
+
+}
+
+
+
+
+
+// =========================
 // ADD KAOS
-// ==========================
+// =========================
 
 
 function addKaos(){
 
 
-    const ukuran =
-    document.getElementById("ukuran").value;
+
+const ukuran =
+document.getElementById("ukuran").value;
 
 
 
-    const lengan =
-    document.getElementById("lengan").value;
+const lengan =
+document.getElementById("lengan").value;
 
 
 
-    // cek jumlah kaos
-
-    const jumlahKaos = cart.filter(
-
-        item => item.jenis === "kaos"
-
-    ).length;
-
-
-
-    if(jumlahKaos >= 3){
-
-
-        alert(
-        "Maksimal pembelian kaos 3 pcs"
-        );
-
-
-        return;
-
-    }
+const qty =
+parseInt(
+document.getElementById("qtyKaos").value
+);
 
 
 
 
 
-    let harga =
+const jumlahKaos =
 
-    hargaProduk.kaos.ukuran[ukuran];
+cart.filter(
+item=>item.jenis==="kaos"
+)
 
+.reduce(
 
+(total,item)=>
 
+total+item.qty,
 
+0
 
-    if(lengan === "panjang"){
-
-
-        harga +=
-        hargaProduk.kaos.lenganPanjang;
-
-
-    }
-
-
-
-
-
-    cart.push({
-
-
-        jenis:"kaos",
-
-
-        nama:
-
-        `Kaos ${ukuran} Lengan ${lengan}`,
-
-
-        harga:
-
-
-        harga,
-
-
-        kupon:
-
-        hargaProduk.kaos.kupon
-
-
-
-    });
+);
 
 
 
 
 
-    updateCart();
+if(
+jumlahKaos + qty > 3
+){
+
+
+alert(
+"Maksimal pembelian kaos 3 pcs"
+);
+
+
+return;
+
+}
+
+
+
+
+
+let harga =
+hargaProduk.kaos.ukuran[ukuran];
+
+
+
+if(lengan==="panjang"){
+
+
+harga +=
+hargaProduk.kaos.lenganPanjang;
+
+
+}
+
+
+
+
+
+const nama =
+
+`Kaos ${ukuran} Lengan ${lengan}`;
+
+
+
+
+
+const existing =
+
+cart.find(
+
+item=>
+
+item.nama===nama
+
+);
+
+
+
+
+
+if(existing){
+
+
+existing.qty += qty;
+
+
+}
+
+else{
+
+
+cart.push({
+
+
+jenis:"kaos",
+
+
+nama:nama,
+
+
+harga:harga,
+
+
+qty:qty,
+
+
+kupon:hargaProduk.kaos.kupon
+
+
+});
+
+
+}
+
+
+
+updateCart();
 
 
 
@@ -145,137 +251,129 @@ function addKaos(){
 
 
 
-// ==========================
+// =========================
 // UPDATE CART
-// ==========================
+// =========================
 
 
 function updateCart(){
 
 
 
-    const cartBox =
+const cartBox =
+document.getElementById("cart");
 
-    document.getElementById("cart");
 
 
+let total=0;
 
-    const totalBox =
+let kupon=0;
 
-    document.getElementById("total");
 
 
+let html="";
 
-    const kuponBox =
 
-    document.getElementById("kupon");
 
 
 
+cart.forEach((item,index)=>{
 
 
-    if(cart.length === 0){
 
+let subtotal =
+item.harga *
+item.qty;
 
-        cartBox.innerHTML =
 
-        "Belum ada pesanan";
 
+total += subtotal;
 
-        totalBox.innerHTML =
-        "Rp0";
 
 
-        kuponBox.innerHTML =
-        "0";
+kupon +=
+item.kupon *
+item.qty;
 
 
-        return;
 
 
-    }
 
+html += `
 
 
+<div class="cart-item">
 
 
-    let total = 0;
+<div>
 
-    let kupon = 0;
+${item.nama}
 
+<br>
 
+<span>
+Qty: ${item.qty}
+</span>
 
-    let html = "";
 
+</div>
 
 
 
+<strong>
 
-    cart.forEach((item,index)=>{
+Rp${subtotal.toLocaleString()}
 
+</strong>
 
-        total += item.harga;
 
 
-        kupon += item.kupon;
+<button onclick="removeItem(${index})">
 
+×
 
+</button>
 
 
 
-        html += `
+</div>
 
 
-        <div class="cart-item">
+`;
 
 
-            <span>
 
-            ${item.nama}
+});
 
-            </span>
 
 
-            <strong>
 
-            Rp${item.harga.toLocaleString()}
 
-            </strong>
+cartBox.innerHTML =
 
+html ||
 
-            <button onclick="removeItem(${index})">
+"Belum ada pesanan";
 
-            ×
 
-            </button>
 
 
-        </div>
 
+document.getElementById("total")
 
-        `;
+.innerHTML =
 
+"Rp"+total.toLocaleString();
 
 
-    });
 
 
 
+document.getElementById("kupon")
 
+.innerHTML =
 
-    cartBox.innerHTML = html;
-
-
-
-    totalBox.innerHTML =
-
-    "Rp" + total.toLocaleString();
-
-
-
-    kuponBox.innerHTML =
-
-    kupon + " Nomor";
+kupon+" Nomor";
 
 
 
@@ -285,18 +383,13 @@ function updateCart(){
 
 
 
-// ==========================
-// REMOVE ITEM
-// ==========================
-
-
 function removeItem(index){
 
 
-    cart.splice(index,1);
+cart.splice(index,1);
 
 
-    updateCart();
+updateCart();
 
 
 }
