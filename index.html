@@ -678,7 +678,8 @@ row.querySelector(".subtotal");
 
 
 
-if(ukuran){
+if (ukuran &&
+    sleeve){
 
 
 let harga=
@@ -739,13 +740,16 @@ rupiah(total);
 }
 
 
-
-
 function aktifkanUkuran(element){
 
     let row = element.closest(".kaos-row");
 
     let ukuran = row.querySelector(".ukuran");
+
+    let qty = row.querySelector(".kaosQty");
+
+    let subtotal = row.querySelector(".subtotal");
+
 
     if(element.value){
 
@@ -753,21 +757,33 @@ function aktifkanUkuran(element){
 
     }else{
 
+        ukuran.value = "";
+
         ukuran.disabled = true;
 
+
+        qty.value = 1;
+
+        qty.disabled = true;
+
+
+        subtotal.innerHTML = "Rp0";
+
     }
+
 
     hitungTotal();
 
 }
-
-
+    
 
 function aktifkanQty(element){
 
     let row = element.closest(".kaos-row");
 
     let qty = row.querySelector(".kaosQty");
+
+    let subtotal = row.querySelector(".subtotal");
 
 
     if(element.value){
@@ -776,7 +792,12 @@ function aktifkanQty(element){
 
     }else{
 
+        qty.value = 1;
+
         qty.disabled = true;
+
+
+        subtotal.innerHTML = "Rp0";
 
     }
 
@@ -784,7 +805,6 @@ function aktifkanQty(element){
     hitungTotal();
 
 }
-
     
 function cekKaos(){
 
