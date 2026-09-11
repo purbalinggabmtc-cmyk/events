@@ -139,53 +139,34 @@ async function(e){
 
 
 
-        if(result.sukses){
+     if(result.sukses){
+
+
+localStorage.setItem(
+
+"peserta",
+
+JSON.stringify({
+
+id: result.id,
+
+nama: result.nama,
+
+tipe: result.tipe,
+
+barcode: result.barcode
+
+})
+
+);
 
 
 
-            // simpan data sementara
-
-            localStorage.setItem(
-
-                "peserta",
-
-                JSON.stringify({
-
-                    id:result.id,
-
-                    nama:nama,
-
-                    tipe:"Free Pass",
-
-                    barcode:result.id
-
-                })
-
-            );
+window.location.href =
+"dashboard.html";
 
 
-
-
-
-            alert(
-
-            "Registration Success"
-
-            );
-
-
-
-
-
-            // masuk dashboard
-
-            window.location.href =
-
-            "dashboard.html";
-
-
-
-        }
+}
 
         else{
 
