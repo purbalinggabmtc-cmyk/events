@@ -32,34 +32,27 @@ background:#050505;
 
 
 
-.background{
+.background {
 
+    position: fixed;
+    inset: 0;
 
-position:fixed;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.92) 0%,
+        rgba(0,0,0,.65) 45%,
+        rgba(0,0,0,.75) 100%
+    ),
+    url("assets/background.jpg");
 
-inset:0;
+    background-size: cover;
 
+    background-position: center;
 
-background:
-
-linear-gradient(
-rgba(0,0,0,.75),
-rgba(0,0,0,.95)
-),
-
-url("assets/background.jpg");
-
-background-size:cover;
-
-background-position:center;
-
-z-index:-2;
-
+    z-index:-2;
 
 }
-
-
-
 
 
 .background::after{
