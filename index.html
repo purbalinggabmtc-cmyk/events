@@ -1405,6 +1405,102 @@ function generateNomorRegistrasi(){
     return nomor;
 
 }
+
+
+function ambilDataPembelian(){
+
+    let pembelian = [];
+
+
+    let prostQty =
+    Number(
+        document.getElementById("prostQty").value
+    );
+
+
+    if(prostQty > 0){
+
+        pembelian.push({
+
+            produk:"Prost Beer",
+
+            jumlah:prostQty
+
+        });
+
+    }
+
+
+
+    let laBoldQty =
+    Number(
+        document.getElementById("laBoldQty").value
+    );
+
+
+    if(laBoldQty > 0){
+
+        pembelian.push({
+
+            produk:"LA Bold 16",
+
+            jumlah:laBoldQty
+
+        });
+
+    }
+
+
+
+
+    document
+    .querySelectorAll(".kaos-row")
+    .forEach(row=>{
+
+
+        let sleeve =
+        row.querySelector(".sleeve").value;
+
+
+        let ukuran =
+        row.querySelector(".ukuran").value;
+
+
+        let qty =
+        Number(
+            row.querySelector(".kaosQty").value
+        );
+
+
+
+        if(
+            sleeve &&
+            ukuran &&
+            qty > 0
+        ){
+
+            pembelian.push({
+
+                produk:
+                "Kaos "+
+                ukuran+
+                " "+
+                sleeve,
+
+                jumlah:qty
+
+            });
+
+        }
+
+
+    });
+
+
+
+    return pembelian;
+
+}
     
 document
 .getElementById("registerForm")
