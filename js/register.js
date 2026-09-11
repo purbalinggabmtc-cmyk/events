@@ -110,6 +110,10 @@ nama:data.nama,
 
 tipe:data.tipe,
 
+pembayaran:"Belum",
+
+merch:"-",
+
 barcode:result.id
 
 })
