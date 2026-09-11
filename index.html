@@ -1597,7 +1597,10 @@ function generateKupon(jumlah){
 }
 
 function tampilkanHasilRegistrasi(data){
-      alert("fungsi hasil dipanggil");
+    alert("fungsi hasil dipanggil");
+
+    console.log("masuk fungsi hasil");
+    console.log(data);
 
     document
     .getElementById("registerForm")
@@ -1608,6 +1611,7 @@ function tampilkanHasilRegistrasi(data){
     document
     .getElementById("hasilRegistrasi")
     .style.display="block";
+    console.log("container hasil aktif");
 
 
 
