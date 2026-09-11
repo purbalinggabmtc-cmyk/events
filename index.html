@@ -1323,7 +1323,68 @@ REGISTER
 
 </form>
 
+<div id="hasilRegistrasi" style="display:none">
 
+<h2>
+Registrasi Berhasil
+</h2>
+
+
+<p>
+Nomor Registrasi:
+</p>
+
+<h1 id="hasilNomor">
+</h1>
+
+
+
+<p>
+Nama:
+</p>
+
+<h3 id="hasilNama">
+</h3>
+
+
+
+<p>
+Pembelian:
+</p>
+
+<div id="hasilPembelian">
+</div>
+
+
+
+<p>
+Total:
+</p>
+
+<h3 id="hasilTotal">
+</h3>
+
+
+
+<p>
+Kamu mendapat
+<span id="hasilJumlahKupon">
+</span>
+kupon undian
+</p>
+
+
+
+<p>
+Nomor Kupon:
+</p>
+
+<div id="hasilKupon">
+</div>
+
+
+</div>
+    
 
 <div class="footer">
 
@@ -1534,6 +1595,106 @@ function generateKupon(jumlah){
     return kupon;
 
 }
+
+function tampilkanHasilRegistrasi(data){
+
+
+    document
+    .getElementById("registerForm")
+    .style.display="none";
+
+
+
+    document
+    .getElementById("hasilRegistrasi")
+    .style.display="block";
+
+
+
+    document
+    .getElementById("hasilNomor")
+    .innerHTML =
+    data.registrasi;
+
+
+
+    document
+    .getElementById("hasilNama")
+    .innerHTML =
+    data.nama;
+
+
+
+    document
+    .getElementById("hasilTotal")
+    .innerHTML =
+    data.total;
+
+
+
+    document
+    .getElementById("hasilJumlahKupon")
+    .innerHTML =
+    data.kupon;
+
+
+
+
+    let pembelianHTML = "";
+
+
+
+    data.pembelian.forEach(item=>{
+
+
+        pembelianHTML +=
+
+        "<div>"+
+        item.produk+
+        " x "+
+        item.jumlah+
+        "</div>";
+
+
+    });
+
+
+
+    document
+    .getElementById("hasilPembelian")
+    .innerHTML =
+    pembelianHTML;
+
+
+
+
+
+    let kuponHTML = "";
+
+
+
+    data.nomorKupon.forEach(nomor=>{
+
+
+        kuponHTML +=
+
+        "<div>"+
+        nomor+
+        "</div>";
+
+
+    });
+
+
+
+    document
+    .getElementById("hasilKupon")
+    .innerHTML =
+    kuponHTML;
+
+
+
+}
     
 document
 .getElementById("registerForm")
@@ -1610,6 +1771,7 @@ let dataPeserta = {
 };
 
 console.log(dataPeserta);
+    tampilkanHasilRegistrasi(dataPeserta);
 
 
 
