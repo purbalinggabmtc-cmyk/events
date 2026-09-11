@@ -896,3 +896,285 @@ color:#aaa;
 
 
 }
+
+/* =========================
+ MERCHANDISE PAGE
+========================= */
+
+
+.merch-page{
+
+    max-width:900px;
+
+}
+
+
+
+.product-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(
+    auto-fit,
+    minmax(220px,1fr)
+    );
+
+    gap:20px;
+
+    margin-top:30px;
+
+}
+
+
+
+.product-card{
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    border-radius:20px;
+
+
+    padding:25px;
+
+
+    text-align:center;
+
+
+    backdrop-filter:blur(15px);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.product-card:hover{
+
+
+    transform:translateY(-8px);
+
+
+    border-color:#d1121f;
+
+
+    box-shadow:
+
+    0 0 30px rgba(209,18,31,.35);
+
+
+}
+
+
+
+
+.product-card h3{
+
+
+    color:white;
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+.price{
+
+
+    font-size:25px;
+
+
+    font-weight:800;
+
+
+    color:#d1121f;
+
+
+    margin:15px 0;
+
+
+}
+
+
+
+.product-card span{
+
+
+    display:block;
+
+
+    color:#aaa;
+
+
+    font-size:13px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.product-card select{
+
+
+    width:100%;
+
+
+    padding:12px;
+
+
+    margin:8px 0;
+
+
+    border-radius:10px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    border:1px solid #333;
+
+
+}
+
+
+
+
+
+.product-card button{
+
+
+    margin-top:15px;
+
+
+}
+
+
+
+
+
+
+/* CART */
+
+
+.cart-box{
+
+
+    margin-top:40px;
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    rgba(0,0,0,.45);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+}
+
+
+
+
+.cart-item{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:12px 0;
+
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.1);
+
+
+    color:white;
+
+
+}
+
+
+
+
+.cart-item button{
+
+
+    background:#d1121f;
+
+
+    width:30px;
+
+
+    height:30px;
+
+
+    padding:0;
+
+
+    border-radius:50%;
+
+
+}
+
+
+
+
+
+#total,#kupon{
+
+
+    color:#d1121f;
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.product-grid{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+}
