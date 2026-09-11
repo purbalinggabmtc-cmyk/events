@@ -86,7 +86,38 @@ transparent 40%
 
 .container{
 
+.container {
 
+    animation:
+    fadeUp 1.2s ease forwards;
+
+}
+
+
+@keyframes fadeUp {
+
+
+from {
+
+    opacity:0;
+
+    transform:
+    translateY(40px);
+
+}
+
+
+to {
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+}
 width:100%;
 
 max-width:430px;
