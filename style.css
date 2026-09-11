@@ -82,100 +82,12 @@ body {
     background:
 
     radial-gradient(
-        circle at 20% 40%,
-        rgba(255,215,120,.15),
-        transparent 25%
-    ),
-
-    radial-gradient(
         circle at center,
         transparent 10%,
         rgba(0,0,0,.75)
     );
 
 }
-
-
-
-/* SPARKLING STARS */
-
-.background::before {
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-
-    background-image:
-
-    radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 2px),
-    radial-gradient(circle, rgba(255,215,120,.8) 1px, transparent 2px),
-    radial-gradient(circle, rgba(255,255,255,.7) 2px, transparent 3px);
-
-
-
-    background-size:
-
-    180px 180px,
-    250px 250px,
-    320px 320px;
-
-
-
-    background-position:
-
-    10% 20%,
-    30% 70%,
-    5% 80%;
-
-
-
-    opacity:.35;
-
-
-    animation:
-
-    sparkleMove 8s linear infinite;
-
-
-}
-
-
-
-/* ANIMASI KELAP-KELIP */
-
-@keyframes sparkleMove {
-
-
-    0% {
-
-        opacity:.2;
-
-        transform:translateY(0);
-
-    }
-
-
-    50% {
-
-        opacity:.5;
-
-    }
-
-
-    100% {
-
-        opacity:.2;
-
-        transform:translateY(-30px);
-
-    }
-
-
-}
-
 
 @keyframes zoomBackground {
 
@@ -260,7 +172,6 @@ body {
 
 .brand-tag {
 
-
     display:inline-flex;
 
     align-items:center;
@@ -268,26 +179,22 @@ body {
     justify-content:center;
 
 
-    padding:
-
-    9px 25px;
+    padding:9px 25px;
 
 
-    border:
-
-    1px solid #d9a441;
+    border:1px solid #d1121f;
 
 
     border-radius:50px;
 
 
-    color:#d9a441;
+    color:#ff3344;
 
 
     font-size:11px;
 
 
-    font-weight:800;
+    font-weight:900;
 
 
     letter-spacing:5px;
@@ -295,21 +202,15 @@ body {
 
     background:
 
-    rgba(217,164,65,.08);
-
+    rgba(209,18,31,.12);
 
 
     box-shadow:
 
-    0 0 25px rgba(217,164,65,.35);
-
+    0 0 20px rgba(209,18,31,.5);
 
 
     margin-bottom:25px;
-
-
-    animation:pulseGlow 3s infinite;
-
 
 }
 
