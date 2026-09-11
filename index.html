@@ -786,50 +786,25 @@ function aktifkanQty(element){
     element.closest(".kaos-row");
 
 
-
     let qty =
     row.querySelector(".kaosQty");
 
 
-
-    let subtotal =
-    row.querySelector(".subtotal");
-
-
-
-
-    if(element.value){
-
+    if(element.value !== ""){
 
         qty.disabled=false;
 
-
     }else{
 
-
         qty.value=1;
-
         qty.disabled=true;
-
-
-        subtotal.innerHTML="Rp0";
-
 
     }
 
 
-
     hitungTotal();
 
-
-
 }
-
-
-
-
-
-
 
 
 function hitungTotal(){
@@ -935,170 +910,95 @@ function hitungTotal(){
 
 
 
-    document
-    .querySelectorAll(".kaos-row")
-    .forEach(row=>{
+document
+.querySelectorAll(".kaos-row")
+.forEach(row=>{
+
+
+    let sleeve =
+    row.querySelector(".sleeve").value.trim();
 
 
 
-
-
-        let sleeve =
-
-        row
-        .querySelector(".sleeve")
-        .value;
+    let ukuran =
+    row.querySelector(".ukuran").value.trim();
 
 
 
-
-
-        let ukuran =
-
-        row
-        .querySelector(".ukuran")
-        .value;
+    let qty =
+    Number(
+        row.querySelector(".kaosQty").value
+    );
 
 
 
-
-
-        let qty =
-
-        Number(
-
-            row
-            .querySelector(".kaosQty")
-            .value
-
-        );
+    let subtotalBox =
+    row.querySelector(".subtotal");
 
 
 
+    if(
+        sleeve !== ""
+        &&
+        ukuran !== ""
+        &&
+        qty > 0
+    ){
 
 
-        let subtotalBox =
-
-        row
-        .querySelector(".subtotal");
-
-
-
-
-
-
-
-        if(
-
-            (
-                sleeve==="pendek"
-                ||
-                sleeve==="panjang"
-            )
-
-            &&
-
-            ukuran
-
-        ){
+        let harga =
+        hargaProduk
+        .kaos
+        .ukuran[ukuran];
 
 
 
+        if(sleeve === "panjang"){
 
-
-            let harga =
-
+            harga +=
             hargaProduk
             .kaos
-            .ukuran[ukuran];
-
-
-
-
-
-
-            if(
-                sleeve==="panjang"
-            ){
-
-
-                harga +=
-
-                hargaProduk
-                .kaos
-                .lenganPanjang;
-
-
-            }
-
-
-
-
-
-
-
-            let subtotal =
-
-            harga *
-            qty;
-
-
-
-
-
-
-            subtotalBox.innerHTML =
-
-            rupiah(subtotal);
-
-
-
-
-
-
-            total += subtotal;
-
-
-
-
-
-
-            jumlahKupon +=
-
-            qty *
-            hargaProduk
-            .kaos
-            .kupon;
-
-
-
-
-
-
-        }else{
-
-
-
-            subtotalBox.innerHTML =
-
-            "Rp0";
-
-
+            .lenganPanjang;
 
         }
 
 
 
-
-
-    });
-
-
+        let subtotal =
+        harga * qty;
 
 
 
+        subtotalBox.innerHTML =
+        rupiah(subtotal);
 
 
+
+        total += subtotal;
+
+
+
+        jumlahKupon +=
+        qty *
+        hargaProduk
+        .kaos
+        .kupon;
+
+
+
+    }else{
+
+
+        subtotalBox.innerHTML =
+        "Rp0";
+
+
+    }
+
+
+});
+
+    
     document
     .getElementById("total")
     .innerHTML =
