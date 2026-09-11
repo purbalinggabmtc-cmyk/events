@@ -1,10 +1,9 @@
 const API_URL = 
-"https://script.google.com/macros/s/AKfycbx17qq0wtAR2b6KCwyASYRV6zszcLeDcXVKSmIKP7yJfwlp_Lkeha1e8HBxzrGqVCag/exec";
+"https://script.google.com/macros/s/AKfycbxwBKVNooM6RhXSc2aHW_KZndTjWCD3_5KSdQLId6RosA1gFP5aCeOxNfYAGTDwYncL/exec";
 
 
 
-const form =
-document.getElementById("loginForm");
+const form = document.getElementById("loginForm");
 
 
 
@@ -13,132 +12,119 @@ form.addEventListener(
 async function(e){
 
 
-e.preventDefault();
+    e.preventDefault();
 
 
 
+    const data = {
 
-const data = {
+        action:"login",
 
+        whatsapp:
+        document.getElementById("loginWhatsapp").value.trim(),
 
-action:"login",
+        pin:
+        document.getElementById("loginPin").value.trim()
 
+    };
 
-whatsapp:
 
-document.getElementById("loginWhatsapp").value.trim(),
 
+    try{
 
 
-pin:
+        const response = await fetch(
 
-document.getElementById("loginPin").value.trim()
+            API_URL,
 
+            {
 
+                method:"POST",
 
-};
+                body:
+                JSON.stringify(data)
 
+            }
 
+        );
 
 
 
-try{
+        const text = await response.text();
 
 
-const response = await fetch(
-API_URL,
-{
-method:"POST",
-body:JSON.stringify(data)
-}
-);
+        console.log(
+            "SERVER RESPONSE:",
+            text
+        );
 
 
-const text = await response.text();
 
+        const result = JSON.parse(text);
 
-console.log("SERVER RESPONSE:", text);
 
 
-const result = JSON.parse(text);
-{
+        console.log(
+            "LOGIN RESULT:",
+            result
+        );
 
 
-method:"POST",
 
 
-body:
 
-JSON.stringify(data)
+        if(result.sukses){
 
 
-}
 
-);
+            sessionStorage.setItem(
 
+                "peserta",
 
+                JSON.stringify(
+                    result.peserta
+                )
 
+            );
 
-const result =
 
-await response.json();
 
+            window.location.href =
+            "dashboard.html";
 
-console.log("LOGIN RESULT:", result);
 
 
+        }
 
+        else{
 
-if(result.sukses){
 
+            alert(
+                result.pesan
+            );
 
 
-sessionStorage.setItem(
+        }
 
-"peserta",
 
-JSON.stringify(
-result.peserta
-)
 
-);
+    }
 
 
+    catch(error){
 
 
-window.location.href =
+        console.error(
+            error
+        );
 
-"dashboard.html";
 
+        alert(
+            "Koneksi gagal"
+        );
 
 
-}
-
-else{
-
-
-alert(result.pesan);
-
-
-}
-
-
-
-}
-
-
-catch(error){
-
-
-console.error(error);
-
-
-alert(
-"Koneksi gagal"
-);
-
-
-}
+    }
 
 
 
