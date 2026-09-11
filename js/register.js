@@ -5,17 +5,8 @@
 const API_URL = 
 "https://script.google.com/macros/s/AKfycbx17qq0wtAR2b6KCwyASYRV6zszcLeDcXVKSmIKP7yJfwlp_Lkeha1e8HBxzrGqVCag/exec";
 
-
-
-
-// =====================
-// FORM REGISTER
-// =====================
-
-
-const form = 
+const form =
 document.getElementById("registerForm");
-
 
 
 
@@ -24,161 +15,146 @@ form.addEventListener(
 async function(e){
 
 
-    e.preventDefault();
+e.preventDefault();
 
 
 
-    // Ambil data input
+const data = {
 
-    const nama =
-    document.getElementById("nama").value.trim();
 
+action:"register",
 
 
-    const whatsapp =
-    document.getElementById("whatsapp").value.trim();
+nama:
+document.getElementById("nama").value.trim(),
 
 
+whatsapp:
+document.getElementById("whatsapp").value.trim(),
 
-    const pin =
-    document.getElementById("pin").value.trim();
 
+pin:
+document.getElementById("pin").value.trim(),
 
 
+tipe:
+"Free Pass",
 
 
-    // Validasi PIN
+bayar:
+"-",
 
-    if(pin.length !== 6){
 
-        alert(
-        "PIN harus 6 angka"
-        );
+merch:
+"-"
 
-        return;
 
-    }
+};
 
 
 
 
 
-    // Data dikirim ke Apps Script
+try{
 
-    const data = {
 
+const response =
 
-        action:"register",
+await fetch(
 
+API_URL,
 
-        nama:nama,
+{
 
+method:"POST",
 
-        whatsapp:whatsapp,
+body:
 
+JSON.stringify(data)
 
-        pin:pin,
+}
 
+);
 
-        tipe:"Free Pass",
 
 
-        bayar:"-",
 
 
-        merch:"-"
+const result =
 
+await response.json();
 
-    };
 
 
 
 
+console.log(result);
 
-    try {
 
 
 
-        const response =
 
-        await fetch(
+if(result.sukses){
 
-            API_URL,
 
-            {
 
+localStorage.setItem(
 
-                method:"POST",
+"peserta",
 
+JSON.stringify({
 
-                body:
+id:result.id,
 
-                JSON.stringify(data)
+nama:data.nama,
 
+tipe:data.tipe,
 
-            }
+barcode:result.id
 
-        );
+})
 
+);
 
 
 
-
-        const result =
-
-        await response.json();
-
-
-
-
-
-        console.log(result);
-
-
-
-
-
-     if(result.sukses){
 
 
 window.location.href =
-"login.html";
+
+"dashboard.html";
+
 
 
 }
 
-        else{
 
 
-            alert(
-
-            result.pesan
-
-            );
+else{
 
 
-        }
+alert(result.pesan);
 
+
+}
 
 
 
-
-    }
-
-    catch(error){
+}
 
 
-        console.error(error);
+catch(error){
 
 
-        alert(
-
-        "Server connection failed"
-
-        );
+console.error(error);
 
 
-    }
+alert(
+"Koneksi gagal"
+);
+
+
+}
 
 
 
