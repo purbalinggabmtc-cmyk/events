@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bold After Dark</title>
+<title>BOLD AFTER DARK | BOLD RIDERS</title>
 
 <link rel="stylesheet" href="style.css">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -16,304 +20,181 @@
 <body>
 
 
-<div class="container">
+<div class="background"></div>
 
 
-<h1>
-BOLD AFTER DARK
-</h1>
 
+<main class="container">
 
-<form id="registerForm">
 
+    <!-- BRAND -->
 
-<div class="form-group">
+    <section class="logo-area">
 
-<label>
-Nama
-</label>
 
-<input
-type="text"
-id="nama"
-placeholder="Masukkan nama"
-required>
+        <div class="brand-tag">
 
-</div>
+            BOLD RIDERS
 
+        </div>
 
 
-<div class="form-group">
 
-<label>
-Nomor WhatsApp
-</label>
+        <h1>
 
-<input
-type="tel"
-id="wa"
-placeholder="08xxxxxxxxxx"
-required>
+            BOLD
 
-</div>
+            <span>
+                AFTER DARK
+            </span>
 
+        </h1>
 
 
-<div class="form-group">
 
-<label>
-PIN (6 angka)
-</label>
+        <p>
+            ENTER THE NIGHT EXPERIENCE
+        </p>
 
-<input
-type="password"
-id="pin"
-maxlength="6"
-inputmode="numeric"
-placeholder="Buat PIN"
-required>
 
-</div>
+    </section>
 
 
 
-<div class="checkbox">
 
 
-<input
-type="checkbox"
-id="buyCheck">
+    <!-- REGISTER CARD -->
 
 
-<label>
+    <section class="register-card">
 
-Saya ingin membeli merch
 
-</label>
+        <div class="card-header">
 
 
-</div>
+            <h2>
+                GET YOUR ACCESS
+            </h2>
 
 
+            <p>
+                Register and become part of the night
+            </p>
 
 
-<div 
-class="purchase"
-id="purchaseBox">
+        </div>
 
 
-<h3>
-Pilihan Produk
-</h3>
 
 
 
-<div class="product-row">
+        <form id="registerForm">
 
 
-<div>
 
-Prost Beer
+            <div class="input-box">
 
-</div>
+                <label>
+                    FULL NAME
+                </label>
 
 
-<input
-type="number"
-id="prostQty"
-min="0"
-value="0">
+                <input 
+                type="text"
+                placeholder="Enter your name"
+                required>
 
 
-<div
-id="prostSubtotal">
+            </div>
 
-Rp0
 
-</div>
 
 
-</div>
 
+            <div class="input-box">
 
 
+                <label>
+                    WHATSAPP
+                </label>
 
 
-<div class="product-row">
+                <input 
+                type="tel"
+                placeholder="08xxxxxxxxxx"
+                required>
 
 
-<div>
+            </div>
 
-LA Bold 16
 
-</div>
 
 
-<input
-type="number"
-id="laBoldQty"
-min="0"
-value="0">
 
+            <div class="input-box">
 
-<div
-id="laBoldSubtotal">
 
-Rp0
+                <label>
+                    CREATE PIN
+                </label>
 
-</div>
 
+                <input 
+                type="password"
+                maxlength="4"
+                placeholder="4 digit PIN"
+                required>
 
-</div>
 
+            </div>
 
 
 
 
-<h3>
-Kaos Event
-</h3>
 
+            <button type="submit">
 
-<div id="kaosContainer">
+                REGISTER
 
+            </button>
 
-<div class="kaos-row">
 
 
-<select class="sleeve">
+        </form>
 
-<option value="">
-Lengan
-</option>
 
-<option value="pendek">
-Pendek
-</option>
 
-<option value="panjang">
-Panjang
-</option>
 
 
-</select>
+        <div class="login-link">
 
 
+            Already registered?
 
 
-<select class="ukuran">
+            <a href="login.html">
 
+                Login here
 
-<option value="">
-Ukuran
-</option>
+            </a>
 
-<option>M</option>
 
-<option>L</option>
 
-<option>XL</option>
+        </div>
 
-<option>2XL</option>
 
-<option>3XL</option>
 
-<option>4XL</option>
 
+    </section>
 
-</select>
 
 
 
+</main>
 
-<input
-type="number"
-class="kaosQty"
-value="1"
-min="1">
-
-
-
-<div class="subtotal">
-
-Rp0
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="total-box">
-
-Total:
-
-<span id="total">
-Rp0
-</span>
-
-
-<br>
-
-
-Kupon:
-
-<span id="jumlahKupon">
-0
-</span>
-
-
-</div>
-
-
-
-<button type="submit">
-
-REGISTER
-
-</button>
-
-
-
-</form>
-
-
-
-<hr>
-
-
-<p>
-Sudah terdaftar?
-</p>
-
-
-<button type="button">
-
-Masuk
-
-</button>
-
-
-
-</div>
-
-
-
-
-<script src="harga.js"></script>
-
-<script src="app.js"></script>
 
 
 </body>
+
 
 </html>
