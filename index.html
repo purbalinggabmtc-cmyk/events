@@ -1631,10 +1631,7 @@ function generateKupon(jumlah){
 }
 
 function tampilkanHasilRegistrasi(data){
-    alert("fungsi hasil dipanggil");
-
-    console.log("masuk fungsi hasil");
-    console.log(data);
+    console.log("DATA HASIL:", data);
 
     document
     .querySelector(".logo")
@@ -1649,9 +1646,10 @@ function tampilkanHasilRegistrasi(data){
     document
     .getElementById("hasilRegistrasi")
     .style.display="block";
-    console.log("container hasil aktif");
 
-
+    document
+.getElementById("hasilRegistrasi")
+.innerHTML = "TEST HASIL MUNCUL";
 
     document
     .getElementById("hasilNomor")
