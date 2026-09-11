@@ -1529,8 +1529,46 @@ function(e){
 
 
 
-   let nomorRegistrasi =
+let nomorRegistrasi =
 generateNomorRegistrasi();
+
+
+let dataPeserta = {
+
+    registrasi:
+    nomorRegistrasi,
+
+
+    nama:
+    nama,
+
+
+    whatsapp:
+    wa,
+
+
+    pembelian:
+    ambilDataPembelian(),
+
+
+    total:
+    document
+    .getElementById("total")
+    .innerText,
+
+
+    kupon:
+    Number(
+        document
+        .getElementById("jumlahKupon")
+        .innerText
+    )
+
+};
+
+
+console.log(dataPeserta);
+
 
 
 alert(
@@ -1547,7 +1585,6 @@ alert(
     wa
 
 );
-
 
 });
 
