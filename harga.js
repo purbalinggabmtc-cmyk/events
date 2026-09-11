@@ -1,7 +1,3 @@
-<script> src="harga.js" </script>
-
-<script>
-
 const buyCheck = document.getElementById("buyCheck");
 const purchaseBox = document.getElementById("purchaseBox");
 
