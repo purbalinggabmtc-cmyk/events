@@ -1,9 +1,10 @@
-const API_URL = 
-"https://script.google.com/macros/s/AKfycbx17qq0wtAR2b6KCwyASYRV6zszcLeDcXVKSmIKP7yJfwlp_Lkeha1e8HBxzrGqVCag/exec";
+const API_URL =
+"https://script.google.com/macros/s/URL_ANDA/exec";
 
 
 
-const form = document.getElementById("loginForm");
+const form =
+document.getElementById("loginForm");
 
 
 
@@ -12,119 +13,103 @@ form.addEventListener(
 async function(e){
 
 
-    e.preventDefault();
+e.preventDefault();
 
 
 
-    const data = {
-
-        action:"login",
-
-        whatsapp:
-        document.getElementById("loginWhatsapp").value.trim(),
-
-        pin:
-        document.getElementById("loginPin").value.trim()
-
-    };
+const data = {
 
 
-
-    try{
-
-
-        const response = await fetch(
-
-            API_URL,
-
-            {
-
-                method:"POST",
-
-                body:
-                JSON.stringify(data)
-
-            }
-
-        );
+action:"login",
 
 
+whatsapp:
 
-        const text = await response.text();
-
-
-        console.log(
-            "SERVER RESPONSE:",
-            text
-        );
+document.getElementById("whatsapp").value.trim(),
 
 
+pin:
 
-        const result = JSON.parse(text);
+document.getElementById("pin").value.trim()
 
 
-
-        console.log(
-            "LOGIN RESULT:",
-            result
-        );
+};
 
 
 
 
 
-        if(result.sukses){
+const response =
+
+await fetch(
+
+API_URL,
+
+{
+
+method:"POST",
+
+body:
+
+JSON.stringify(data)
+
+}
+
+);
 
 
 
-            sessionStorage.setItem(
 
-                "peserta",
 
-                JSON.stringify(
-                    result.peserta
-                )
+const result =
 
-            );
+await response.json();
 
 
 
-            window.location.href =
-            "dashboard.html";
+
+
+console.log(result);
 
 
 
-        }
-
-        else{
 
 
-            alert(
-                result.pesan
-            );
-
-
-        }
+if(result.sukses){
 
 
 
-    }
+localStorage.setItem(
+
+"peserta",
+
+JSON.stringify(
+
+result.peserta
+
+)
+
+);
 
 
-    catch(error){
 
 
-        console.error(
-            error
-        );
+
+window.location.href =
+
+"dashboard.html";
 
 
-        alert(
-            "Koneksi gagal"
-        );
+
+}
+
+else{
 
 
-    }
+alert(result.pesan);
+
+
+}
 
 
 
