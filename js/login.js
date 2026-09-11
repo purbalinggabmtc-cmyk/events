@@ -15,7 +15,42 @@ async function(e){
 
 e.preventDefault();
 
+const whatsapp =
+document.getElementById("whatsapp").value.trim();
 
+
+const pin =
+document.getElementById("pin").value.trim();
+
+
+
+if(!/^[0-9]+$/.test(whatsapp)){
+
+
+alert(
+"Nomor WhatsApp hanya boleh angka"
+);
+
+
+return;
+
+
+}
+
+
+
+if(!/^[0-9]{6}$/.test(pin)){
+
+
+alert(
+"PIN harus 6 angka"
+);
+
+
+return;
+
+
+}
 
 console.log("LOGIN BUTTON CLICKED");
 
