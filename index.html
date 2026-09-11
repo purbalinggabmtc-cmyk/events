@@ -173,7 +173,13 @@ select:disabled{
 
 }
 
+.checkbox input:disabled + label{
 
+    opacity:.45;
+
+    cursor:not-allowed;
+
+}
 
 .purchase{
 
@@ -459,15 +465,15 @@ required>
 
 <input
 type="checkbox"
-id="buyCheck">
+id="buyCheck"
+disabled>
 
 
-<label>
+<label for="buyCheck">
 
 Saya ingin mendapat kupon undian
 
 </label>
-
 
 </div>
 
@@ -678,6 +684,63 @@ document.getElementById("buyCheck");
 const purchaseBox =
 document.getElementById("purchaseBox");
 
+
+const namaInput =
+document.getElementById("nama");
+
+
+const waInput =
+document.getElementById("wa");
+
+function cekDataRegistrasi(){
+
+    const nama =
+    namaInput.value.trim();
+
+
+    const wa =
+    waInput.value.trim();
+
+
+
+    if(
+        nama !== ""
+        &&
+        wa !== ""
+    ){
+
+        buyCheck.disabled = false;
+
+
+    }else{
+
+
+        buyCheck.disabled = true;
+
+
+        buyCheck.checked = false;
+
+
+        purchaseBox.style.display="none";
+
+
+    }
+
+}
+
+
+
+namaInput.addEventListener(
+"input",
+cekDataRegistrasi
+);
+
+
+
+waInput.addEventListener(
+"input",
+cekDataRegistrasi
+);
 
 
 buyCheck.addEventListener("change",()=>{
