@@ -150,16 +150,15 @@ JSON.stringify({
 
 id: result.id,
 
-nama: result.nama,
+nama: nama,
 
-tipe: result.tipe,
+tipe: "Free Pass",
 
-barcode: result.barcode
+barcode: result.id
 
 })
 
 );
-
 
 
 window.location.href =
