@@ -1,10 +1,22 @@
+// =====================
+// GOOGLE APPS SCRIPT API
+// =====================
+
+
 const API_URL = 
 "https://script.google.com/macros/s/AKfycbxwBKVNooM6RhXSc2aHW_KZndTjWCD3_5KSdQLId6RosA1gFP5aCeOxNfYAGTDwYncL/exec";
 
 
 
-const form =
+
+// =====================
+// FORM REGISTER
+// =====================
+
+
+const form = 
 document.getElementById("registerForm");
+
 
 
 
@@ -13,129 +25,201 @@ form.addEventListener(
 async function(e){
 
 
-e.preventDefault();
+    e.preventDefault();
 
 
 
-const data = {
+    // Ambil data input
 
+    const nama =
+    document.getElementById("nama").value.trim();
 
-action:"register",
 
 
-nama:
-document.getElementById("nama").value,
+    const whatsapp =
+    document.getElementById("whatsapp").value.trim();
 
 
-whatsapp:
-document.getElementById("whatsapp").value,
 
+    const pin =
+    document.getElementById("pin").value.trim();
 
-pin:
-document.getElementById("pin").value,
 
 
-tipe:
-"Free Pass",
 
 
-bayar:
-"-",
+    // Validasi PIN
 
+    if(pin.length !== 6){
 
-merch:
-"-"
+        alert(
+        "PIN harus 6 angka"
+        );
 
+        return;
 
-};
+    }
 
 
 
 
 
-try{
+    // Data dikirim ke Apps Script
 
+    const data = {
 
-const response =
-await fetch(
-API_URL,
-{
 
-method:"POST",
+        action:"register",
 
-body:
-JSON.stringify(data)
 
-}
+        nama:nama,
 
-);
 
+        whatsapp:whatsapp,
 
 
-const result =
-await response.json();
+        pin:pin,
 
 
+        tipe:"Free Pass",
 
-console.log(result);
 
+        bayar:"-",
 
 
-if(result.sukses){
+        merch:"-"
 
 
+    };
 
-localStorage.setItem(
 
-"peserta",
 
-JSON.stringify({
 
-id:result.id,
 
-nama:data.nama,
+    try {
 
-tipe:data.tipe,
 
-barcode:result.id
 
-})
+        const response =
 
-);
+        await fetch(
 
+            API_URL,
 
+            {
 
-window.location.href =
-"dashboard.html";
 
+                method:"POST",
 
 
-}
+                body:
 
-else{
+                JSON.stringify(data)
 
 
-alert(result.pesan);
+            }
 
+        );
 
-}
 
 
 
-}
 
-catch(error){
+        const result =
 
+        await response.json();
 
-console.log(error);
 
 
-alert(
-"Gagal koneksi server"
-);
 
 
-}
+        console.log(result);
+
+
+
+
+
+        if(result.sukses){
+
+
+
+            // simpan data sementara
+
+            localStorage.setItem(
+
+                "peserta",
+
+                JSON.stringify({
+
+                    id:result.id,
+
+                    nama:nama,
+
+                    tipe:"Free Pass",
+
+                    barcode:result.id
+
+                })
+
+            );
+
+
+
+
+
+            alert(
+
+            "Registration Success"
+
+            );
+
+
+
+
+
+            // masuk dashboard
+
+            window.location.href =
+
+            "dashboard.html";
+
+
+
+        }
+
+        else{
+
+
+            alert(
+
+            result.pesan
+
+            );
+
+
+        }
+
+
+
+
+
+    }
+
+    catch(error){
+
+
+        console.error(error);
+
+
+        alert(
+
+        "Server connection failed"
+
+        );
+
+
+    }
+
 
 
 });
