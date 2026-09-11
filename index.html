@@ -164,20 +164,23 @@ BOLD AFTER DARK | BOLD RIDERS
                 </label>
 
 
-
                 <input
 
                 id="pin"
 
                 type="password"
 
+                inputmode="numeric"
+
+                pattern="[0-9]*"
+
                 maxlength="6"
 
                 placeholder="6 digit PIN"
 
+                oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+
                 required>
-
-
             </div>
 
 
