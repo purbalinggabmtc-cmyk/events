@@ -9,7 +9,7 @@
 
 
 <title>
-BOLD AFTER DARK | MERCHANDISE
+BOLD AFTER DARK | MERCH
 </title>
 
 
@@ -31,7 +31,7 @@ BOLD AFTER DARK | MERCHANDISE
 
 
 
-<section class="register-card merchandise">
+<section class="register-card merch-page">
 
 
 
@@ -43,22 +43,23 @@ BOLD RIDERS
 
 
 
-
 <h2>
-
-OFFICIAL MERCH
-
+OFFICIAL MERCHANDISE
 </h2>
 
 
 <p>
-Support the night experience
+Limited event collection
 </p>
 
 
 
 
-<!-- PROST -->
+<!-- PRODUCT -->
+
+
+<div class="product-grid">
+
 
 
 <div class="product-card">
@@ -69,14 +70,23 @@ PROST BEER
 </h3>
 
 
-<p>
+<div class="price">
+
 Rp55.000
-</p>
+
+</div>
 
 
-<button onclick="buyProduct('prostBeer')">
+<span>
++1 Lucky Draw
 
-BUY
+</span>
+
+
+
+<button onclick="addProduct('prostBeer')">
+
+ADD
 
 </button>
 
@@ -85,9 +95,6 @@ BUY
 
 
 
-
-
-<!-- LA BOLD -->
 
 
 <div class="product-card">
@@ -98,14 +105,23 @@ LA BOLD 16
 </h3>
 
 
-<p>
+<div class="price">
+
 Rp50.000
-</p>
+
+</div>
 
 
-<button onclick="buyProduct('laBold16')">
+<span>
++1 Lucky Draw
 
-BUY
+</span>
+
+
+
+<button onclick="addProduct('laBold16')">
+
+ADD
 
 </button>
 
@@ -116,10 +132,7 @@ BUY
 
 
 
-<!-- KAOS -->
-
-
-<div class="product-card">
+<div class="product-card kaos-card">
 
 
 <h3>
@@ -127,42 +140,26 @@ BOLD RIDERS T-SHIRT
 </h3>
 
 
-<p>
-Starting Rp100.000
-</p>
+
+<label>
+Jenis Lengan
+</label>
 
 
+<select id="lengan">
 
-<select id="ukuran">
 
+<option value="pendek">
 
-<option value="M">
-M - Rp100.000
+Lengan Pendek
+
 </option>
 
 
-<option value="L">
-L - Rp100.000
-</option>
+<option value="panjang">
 
+Lengan Panjang
 
-<option value="XL">
-XL - Rp100.000
-</option>
-
-
-<option value="2XL">
-2XL - Rp105.000
-</option>
-
-
-<option value="3XL">
-3XL - Rp110.000
-</option>
-
-
-<option value="4XL">
-4XL - Rp115.000
 </option>
 
 
@@ -171,9 +168,101 @@ XL - Rp100.000
 
 
 
-<button onclick="buyKaos()">
 
-BUY
+<label>
+Ukuran
+</label>
+
+
+<select id="ukuran">
+
+
+<option>M</option>
+
+<option>L</option>
+
+<option>XL</option>
+
+<option>2XL</option>
+
+<option>3XL</option>
+
+<option>4XL</option>
+
+
+</select>
+
+
+
+
+<button onclick="addKaos()">
+
+ADD KAOS
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- CART -->
+
+
+<div class="cart-box">
+
+
+<h3>
+YOUR ORDER
+</h3>
+
+
+<div id="cart">
+
+Belum ada pesanan
+
+</div>
+
+
+
+<hr>
+
+
+<p>
+TOTAL
+</p>
+
+
+<h2 id="total">
+
+Rp0
+
+</h2>
+
+
+
+<p>
+LUCKY DRAW
+</p>
+
+
+<h2 id="kupon">
+
+0
+
+</h2>
+
+
+
+<button>
+
+CHECKOUT
 
 </button>
 
@@ -187,7 +276,7 @@ BUY
 
 <button onclick="location.href='dashboard.html'">
 
-BACK TO DASHBOARD
+BACK
 
 </button>
 
@@ -207,7 +296,7 @@ BACK TO DASHBOARD
 <script src="js/merchandise.js"></script>
 
 
-</body>
 
+</body>
 
 </html>
