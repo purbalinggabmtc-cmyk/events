@@ -1,16 +1,27 @@
+// =====================
+// GET PESERTA DATA
+// =====================
+
+
 const peserta = JSON.parse(
 
-localStorage.getItem("peserta")
+    localStorage.getItem("peserta")
 
 );
 
 
 
+
+// =====================
+// CHECK SESSION
+// =====================
+
+
 if(!peserta){
 
 
-window.location.href =
-"index.html";
+    window.location.href =
+    "index.html";
 
 
 }
@@ -19,14 +30,24 @@ window.location.href =
 
 
 
+// =====================
+// DISPLAY NAME
+// =====================
+
+
 document.getElementById("nama")
 
 .innerHTML =
 
-peserta.nama || "-";
+(peserta.nama || "-").toUpperCase();
 
 
 
+
+
+// =====================
+// DISPLAY ID
+// =====================
 
 
 document.getElementById("id")
@@ -39,34 +60,67 @@ peserta.id || "-";
 
 
 
+// =====================
+// DISPLAY TYPE
+// =====================
+
+
 document.getElementById("tipe")
 
 .innerHTML =
 
-peserta.tipe || "Free Pass";
+(peserta.tipe || "FREE PASS").toUpperCase();
 
 
 
+
+
+// =====================
+// GENERATE QR CODE
+// =====================
 
 
 new QRCode(
 
-document.getElementById("qrcode"),
+    document.getElementById("qrcode"),
 
-{
-
-
-text:
-
-peserta.barcode,
+    {
 
 
-width:160,
+        text:
+
+        peserta.barcode || peserta.id,
 
 
-height:160
+        width:160,
+
+
+        height:160
+
+
+    }
+
+);
+
+
+
+
+
+// =====================
+// LOGOUT
+// =====================
+
+
+function logout(){
+
+
+    localStorage.removeItem(
+        "peserta"
+    );
+
+
+    window.location.href =
+    "index.html";
 
 
 }
-
-);
