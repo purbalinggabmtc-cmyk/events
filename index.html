@@ -424,13 +424,11 @@ Prost Beer
 
 </div>
 
-
 <input
 type="number"
 id="prostQty"
 min="0"
 value="0">
-
 
 <div
 class="subtotal"
@@ -440,13 +438,9 @@ Rp0
 
 </div>
 
-
 </div>
 
-
-
 <div class="product-row">
-
 
 <div>
 
@@ -458,13 +452,11 @@ LA Bold 16
 
 </div>
 
-
 <input
 type="number"
 id="laBoldQty"
 min="0"
 value="0">
-
 
 <div
 class="subtotal"
@@ -474,22 +466,17 @@ Rp0
 
 </div>
 
-
 </div>
-
 
 <h3 style="margin-top:25px">
 Kaos Event
 </h3>
 
-
 <div id="kaosContainer">
-
 
 <div class="kaos-row">
 
-
-<select class="sleeve" onchange="cekKaos()">
+<select class="sleeve" onchange="aktifkanUkuran(this)">
 
 <option value="">
 Lengan
@@ -505,8 +492,7 @@ Panjang
 
 </select>
 
-
-<select class="ukuran" onchange="cekKaos()">
+<select class="ukuran" onchange="aktifkanQty(this)" disabled>
 
 <option value="">
 Uk.
@@ -521,16 +507,14 @@ Uk.
 
 </select>
 
-
 <input
 type="number"
 class="kaosQty"
 value="1"
 min="1"
+disabled
 oninput="hitungTotal()">
-
-
-
+    
 <div class="subtotal">
 Rp0
 </div>
@@ -757,8 +741,51 @@ rupiah(total);
 
 
 
+function aktifkanUkuran(element){
+
+    let row = element.closest(".kaos-row");
+
+    let ukuran = row.querySelector(".ukuran");
+
+    if(element.value){
+
+        ukuran.disabled = false;
+
+    }else{
+
+        ukuran.disabled = true;
+
+    }
+
+    hitungTotal();
+
+}
 
 
+
+function aktifkanQty(element){
+
+    let row = element.closest(".kaos-row");
+
+    let qty = row.querySelector(".kaosQty");
+
+
+    if(element.value){
+
+        qty.disabled = false;
+
+    }else{
+
+        qty.disabled = true;
+
+    }
+
+
+    hitungTotal();
+
+}
+
+    
 function cekKaos(){
 
 
@@ -800,7 +827,7 @@ div.className="kaos-row";
 
 div.innerHTML=`
 
-<select class="sleeve" onchange="hitungTotal()">
+<select class="sleeve" onchange="aktifkanUkuran(this)">
 
 <option value="">
 Lengan
@@ -817,7 +844,7 @@ Panjang
 </select>
 
 
-<select class="ukuran" onchange="cekKaos()">
+<select class="ukuran" onchange="aktifkanQty(this);cekKaos()">
 
 <option value="">
 Uk.
@@ -839,9 +866,8 @@ type="number"
 class="kaosQty"
 value="1"
 min="1"
+disabled
 oninput="hitungTotal()">
-
-
 
 <div class="subtotal">
 Rp0
