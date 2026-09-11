@@ -45,12 +45,22 @@ document.getElementById("loginPin").value.trim()
 try{
 
 
-const response =
-
-await fetch(
-
+const response = await fetch(
 API_URL,
+{
+method:"POST",
+body:JSON.stringify(data)
+}
+);
 
+
+const text = await response.text();
+
+
+console.log("SERVER RESPONSE:", text);
+
+
+const result = JSON.parse(text);
 {
 
 
