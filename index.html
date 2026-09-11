@@ -1339,7 +1339,73 @@ REGISTER
 
 <script>
 
+function generateNomorRegistrasi(){
 
+    let nomor;
+
+    let daftar =
+    JSON.parse(
+        localStorage.getItem("nomorRegistrasi")
+    ) || [];
+
+
+    do{
+
+
+        let huruf =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+
+        let kodeHuruf = "";
+
+
+        for(let i=0;i<2;i++){
+
+            kodeHuruf +=
+            huruf.charAt(
+                Math.floor(
+                    Math.random()*huruf.length
+                )
+            );
+
+        }
+
+
+
+        let kodeAngka =
+        Math.floor(
+            1000 +
+            Math.random()*9000
+        );
+
+
+
+        nomor =
+        kodeHuruf + "-" + kodeAngka;
+
+
+
+    }while(
+        daftar.includes(nomor)
+    );
+
+
+
+    daftar.push(nomor);
+
+
+
+    localStorage.setItem(
+        "nomorRegistrasi",
+        JSON.stringify(daftar)
+    );
+
+
+
+    return nomor;
+
+}
+    
 document
 .getElementById("registerForm")
 .addEventListener(
@@ -1367,17 +1433,24 @@ function(e){
 
 
 
-    alert(
+   let nomorRegistrasi =
+generateNomorRegistrasi();
 
-        "Registrasi berhasil\n\n"+
 
-        "Nama: "+
-        nama+
+alert(
 
-        "\nWhatsApp: "+
-        wa
+    "Registrasi berhasil\n\n"+
 
-    );
+    "Nomor Registrasi: "+
+    nomorRegistrasi+
+
+    "\nNama: "+
+    nama+
+
+    "\nWhatsApp: "+
+    wa
+
+);
 
 
 });
