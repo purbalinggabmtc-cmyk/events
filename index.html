@@ -1,557 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Bold After Dark</title>
 
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxwBKVNooM6RhXSc2aHW_KZndTjWCD3_5KSdQLId6RosA1gFP5aCeOxNfYAGTDwYncL/exec";
-</script>
-    
-<style>class="purchase
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-
-body{
-
-    min-height:100vh;
-
-    background:
-    radial-gradient(circle at top,#3a0000,#050505 55%);
-
-    color:#fff;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:20px;
-
-}
-
-
-.container{
-
-    width:100%;
-
-    max-width:520px;
-
-    background:rgba(20,20,20,.96);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    border-radius:20px;
-
-    padding:35px;
-
-    box-shadow:
-    0 20px 60px rgba(0,0,0,.6);
-
-}
-
-
-
-.logo{
-
-    text-align:center;
-
-    margin-bottom:30px;
-
-}
-
-
-
-.logo h1{
-
-    font-size:28px;
-
-    font-weight:900;
-
-    letter-spacing:2px;
-
-    color:#e30613;
-
-    white-space:nowrap;
-
-}
-
-
-
-.logo p{
-
-    margin-top:8px;
-
-    color:#bbb;
-
-    letter-spacing:3px;
-
-    font-size:13px;
-
-}
-
-
-
-.form-group{
-
-    margin-bottom:18px;
-
-}
-
-
-
-label{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    font-size:14px;
-
-    color:#ddd;
-
-}
-
-
-
-input,
-select{
-
-    width:100%;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    border:1px solid #333;
-
-    background:#111;
-
-    color:white;
-
-    outline:none;
-
-}
-
-
-
-input:disabled,
-select:disabled{
-
-    opacity:.45;
-
-    cursor:not-allowed;
-
-}
-
-
-
-.checkbox{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin:20px 0;
-
-}
-
-
-
-.checkbox input{
-
-    width:auto;
-
-}
-
-.checkbox input:disabled + label{
-
-    opacity:.45;
-
-    cursor:not-allowed;
-
-}
-
-.purchase{
-
-    display:none;
-
-    border-top:1px solid #333;
-
-    padding-top:20px;
-
-}
-
-
-
-.product-row{
-
-    display:grid;
-
-    grid-template-columns:
-
-    1.4fr .7fr .8fr;
-
-    gap:10px;
-
-    align-items:center;
-
-    background:#111;
-
-    border:1px solid #292929;
-
-    padding:12px;
-
-    border-radius:12px;
-
-    margin-bottom:10px;
-
-}
-
-
-
-.price{
-
-    color:#aaa;
-
-    font-size:13px;
-
-}
-
-
-
-.product-row input{
-
-    width:100%;
-
-}
-
-
-
-.subtotal{
-
-    font-size:13px;
-
-    text-align:center;
-
-    white-space:nowrap;
-
-}
-
-
-
-.kaos-row{
-
-    display:grid;
-
-    grid-template-columns:
-
-    1.15fr .55fr .45fr .7fr;
-
-    gap:8px;
-
-    align-items:center;
-
-    background:#111;
-
-    border:1px solid #292929;
-
-    padding:10px;
-
-    border-radius:12px;
-
-    margin-bottom:10px;
-
-}
-
-
-
-.kaos-row input,
-.kaos-row select{
-
-    font-size:12px;
-
-    padding:10px 8px;
-
-}
-
-
-
-.kaos-row .subtotal{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    font-size:12px;
-
-}
-
-
-
-.total-box{
-
-    margin-top:20px;
-
-    padding:15px;
-
-    border-radius:12px;
-
-    background:#111;
-
-    font-size:18px;
-
-}
-
-
-
-.kupon-info{
-
-    margin-top:10px;
-
-    font-size:14px;
-
-    color:#bbb;
-
-}
-
-
-
-button{
-
-    width:100%;
-
-    margin-top:25px;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#e30613;
-
-    color:white;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-}
-
-
-
-button:hover{
-
-    background:#ff1b2d;
-
-}
-
-
-
-.footer{
-
-    text-align:center;
-
-    margin-top:1200px;
-
-    color:#777;
-
-    font-size:12px;
-
-}
-
-
-
-@media(max-width:500px){
-
-#hasilRegistrasi{
-
-    background:#111;
-
-    border:1px solid #333;
-
-    border-radius:18px;
-
-    padding:25px;
-
-    margin-top:20px;
-
-    color:white;
-
-}
-
-
-
-#hasilRegistrasi h2{
-
-    text-align:center;
-
-    color:#e30613;
-
-    margin-bottom:20px;
-
-}
-
-
-
-#hasilRegistrasi p{
-
-    margin-top:15px;
-
-    color:#aaa;
-
-    font-size:13px;
-
-}
-
-
-
-#hasilNomor{
-
-    text-align:center;
-
-    color:#e30613;
-
-    font-size:32px;
-
-    letter-spacing:5px;
-
-    margin:10px 0 20px;
-
-}
-
-
-
-#hasilNama,
-#hasilTotal{
-
-    font-size:22px;
-
-    margin-top:5px;
-
-}
-
-
-
-#hasilPembelian div{
-
-    padding:8px 0;
-
-    border-bottom:1px solid #222;
-
-}
-
-
-
-#hasilKupon{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:10px;
-
-}
-
-
-
-#hasilKupon div{
-
-    background:#e30613;
-
-    color:white;
-
-    padding:10px 15px;
-
-    border-radius:10px;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-
-}
-
-.logo h1{
-
-    font-size:22px;
-
-}
-
-
-.container{
-
-    padding:25px;
-
-}
-
-
-.kaos-row{
-
-    grid-template-columns:
-
-    1.1fr .55fr .4fr .65fr;
-
-}
-
-
-}
-
-#hasilRegistrasi{
-
-    color:white;
-
-    text-align:center;
-
-    padding:30px;
-
-}
-
-
-#hasilRegistrasi h1{
-
-    color:#e30613;
-
-    font-size:40px;
-
-}
-
-
-#hasilKupon div{
-
-    display:inline-block;
-
-    background:#111;
-
-    border:1px solid #333;
-
-    padding:10px;
-
-    margin:5px;
-
-    border-radius:8px;
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -562,23 +19,19 @@ button:hover{
 <div class="container">
 
 
-<div class="logo">
-
-<h1>BOLD AFTER DARK</h1>
-
-<p>THE EVENT</p>
-
-</div>
-
+<h1>
+BOLD AFTER DARK
+</h1>
 
 
 <form id="registerForm">
 
 
-
 <div class="form-group">
 
-<label>Nama</label>
+<label>
+Nama
+</label>
 
 <input
 type="text"
@@ -590,10 +43,11 @@ required>
 
 
 
-
 <div class="form-group">
 
-<label>Nomor WhatsApp</label>
+<label>
+Nomor WhatsApp
+</label>
 
 <input
 type="tel"
@@ -603,48 +57,54 @@ required>
 
 </div>
 
+
+
 <div class="form-group">
 
-<label>PIN (6 angka)</label>
+<label>
+PIN (6 angka)
+</label>
 
 <input
 type="password"
 id="pin"
-placeholder="Masukkan PIN 6 angka"
 maxlength="6"
 inputmode="numeric"
-pattern="[0-9]{6}"
+placeholder="Buat PIN"
 required>
 
 </div>
 
 
+
 <div class="checkbox">
+
 
 <input
 type="checkbox"
-id="buyCheck"
-disabled>
+id="buyCheck">
 
 
-<label for="buyCheck">
+<label>
 
-Saya ingin mendapat kupon undian
+Saya ingin membeli merch
 
 </label>
+
 
 </div>
 
 
 
 
-<div class="purchase" id="purchaseBox">
+<div 
+class="purchase"
+id="purchaseBox">
 
 
-<h3>Pilihan Produk</h3>
-
-
-<br>
+<h3>
+Pilihan Produk
+</h3>
 
 
 
@@ -653,18 +113,9 @@ Saya ingin mendapat kupon undian
 
 <div>
 
-<div>
 Prost Beer
-</div>
-
-<div 
-class="price"
-id="prostPrice">
 
 </div>
-
-</div>
-
 
 
 <input
@@ -674,15 +125,12 @@ min="0"
 value="0">
 
 
-
 <div
-class="subtotal"
 id="prostSubtotal">
 
 Rp0
 
 </div>
-
 
 
 </div>
@@ -696,18 +144,9 @@ Rp0
 
 <div>
 
-<div>
 LA Bold 16
-</div>
-
-<div 
-class="price"
-id="laBoldPrice">
 
 </div>
-
-</div>
-
 
 
 <input
@@ -717,9 +156,7 @@ min="0"
 value="0">
 
 
-
 <div
-class="subtotal"
 id="laBoldSubtotal">
 
 Rp0
@@ -727,42 +164,32 @@ Rp0
 </div>
 
 
-
 </div>
 
 
 
 
-<h3 style="margin-top:25px">
 
+<h3>
 Kaos Event
-
 </h3>
-
 
 
 <div id="kaosContainer">
 
 
-
 <div class="kaos-row">
 
 
-
-<select 
-class="sleeve"
-onchange="aktifkanUkuran(this)">
-
+<select class="sleeve">
 
 <option value="">
 Lengan
 </option>
 
-
 <option value="pendek">
 Pendek
 </option>
-
 
 <option value="panjang">
 Panjang
@@ -774,17 +201,12 @@ Panjang
 
 
 
-
-<select 
-class="ukuran"
-onchange="aktifkanQty(this);cekKaos()"
-disabled>
+<select class="ukuran">
 
 
 <option value="">
-Uk.
+Ukuran
 </option>
-
 
 <option>M</option>
 
@@ -804,16 +226,11 @@ Uk.
 
 
 
-
 <input
 type="number"
 class="kaosQty"
 value="1"
-min="1"
-disabled
-oninput="hitungTotal()">
-
-
+min="1">
 
 
 
@@ -824,628 +241,16 @@ Rp0
 </div>
 
 
+</div>
+
+
+</div>
 
 
 </div>
 
 
-</div>
-    
-<script src="harga.js"></script>
 
-<script>
-
-
-const buyCheck =
-document.getElementById("buyCheck");
-
-
-const purchaseBox =
-document.getElementById("purchaseBox");
-
-
-const namaInput =
-document.getElementById("nama");
-
-
-const waInput =
-document.getElementById("wa");
-
-function cekDataRegistrasi(){
-
-    const nama =
-    namaInput.value.trim();
-
-
-    const wa =
-    waInput.value.trim();
-
-
-
-    if(
-        nama !== ""
-        &&
-        wa !== ""
-    ){
-
-        buyCheck.disabled = false;
-
-
-    }else{
-
-
-        buyCheck.disabled = true;
-
-
-        buyCheck.checked = false;
-
-
-        purchaseBox.style.display="none";
-
-
-    }
-
-}
-
-
-
-namaInput.addEventListener(
-"input",
-cekDataRegistrasi
-);
-
-
-
-waInput.addEventListener(
-"input",
-cekDataRegistrasi
-);
-
-
-buyCheck.addEventListener("change",()=>{
-
-
-    purchaseBox.style.display =
-    buyCheck.checked
-    ?
-    "block"
-    :
-    "none";
-
-
-    hitungTotal();
-
-
-});
-
-
-
-
-
-function rupiah(value){
-
-
-    return "Rp"+value.toLocaleString("id-ID");
-
-
-}
-
-
-
-
-
-
-
-function aktifkanUkuran(element){
-
-
-    let row =
-    element.closest(".kaos-row");
-
-
-
-    let ukuran =
-    row.querySelector(".ukuran");
-
-
-
-    let qty =
-    row.querySelector(".kaosQty");
-
-
-
-    let subtotal =
-    row.querySelector(".subtotal");
-
-
-
-
-    if(
-        element.value==="pendek"
-        ||
-        element.value==="panjang"
-    ){
-
-
-        ukuran.disabled=false;
-
-
-    }else{
-
-
-        ukuran.value="";
-
-        ukuran.disabled=true;
-
-
-        qty.value=1;
-
-        qty.disabled=true;
-
-
-        subtotal.innerHTML="Rp0";
-
-
-    }
-
-
-
-    hitungTotal();
-
-
-}
-
-
-
-
-
-
-
-function aktifkanQty(element){
-
-
-    let row =
-    element.closest(".kaos-row");
-
-
-    let qty =
-    row.querySelector(".kaosQty");
-
-
-    if(element.value !== ""){
-
-        qty.disabled=false;
-
-    }else{
-
-        qty.value=1;
-        qty.disabled=true;
-
-    }
-
-
-    hitungTotal();
-
-}
-
-
-function hitungTotal(){
-
-
-
-    let total = 0;
-
-
-    let jumlahKupon = 0;
-
-
-
-
-
-    let prostQty =
-
-    Number(
-        document.getElementById("prostQty").value
-    );
-
-
-
-    let laBoldQty =
-
-    Number(
-        document.getElementById("laBoldQty").value
-    );
-
-
-
-
-
-
-
-    let prost =
-
-    prostQty *
-    hargaProduk.prostBeer.harga;
-
-
-
-
-
-    let laBold =
-
-    laBoldQty *
-    hargaProduk.laBold16.harga;
-
-
-
-
-
-
-    document.getElementById("prostSubtotal")
-
-    .innerHTML =
-
-    rupiah(prost);
-
-
-
-
-
-    document.getElementById("laBoldSubtotal")
-
-    .innerHTML =
-
-    rupiah(laBold);
-
-
-
-
-
-
-
-    total += prost;
-
-    total += laBold;
-
-
-
-
-
-
-    jumlahKupon +=
-
-    prostQty *
-    hargaProduk.prostBeer.kupon;
-
-
-
-
-
-    jumlahKupon +=
-
-    laBoldQty *
-    hargaProduk.laBold16.kupon;
-
-
-
-
-
-
-
-document
-.querySelectorAll(".kaos-row")
-.forEach(row=>{
-
-
-    let sleeve =
-    row.querySelector(".sleeve").value.trim();
-
-
-
-    let ukuran =
-    row.querySelector(".ukuran").value.trim();
-
-
-
-    let qty =
-    Number(
-        row.querySelector(".kaosQty").value
-    );
-
-
-
-    let subtotalBox =
-    row.querySelector(".subtotal");
-
-
-
-    if(
-        sleeve !== ""
-        &&
-        ukuran !== ""
-        &&
-        qty > 0
-    ){
-
-
-        let harga =
-        hargaProduk
-        .kaos
-        .ukuran[ukuran];
-
-
-
-        if(sleeve === "panjang"){
-
-            harga +=
-            hargaProduk
-            .kaos
-            .lenganPanjang;
-
-        }
-
-
-
-        let subtotal =
-        harga * qty;
-
-
-
-        subtotalBox.innerHTML =
-        rupiah(subtotal);
-
-
-
-        total += subtotal;
-
-
-
-        jumlahKupon +=
-        qty *
-        hargaProduk
-        .kaos
-        .kupon;
-
-
-
-    }else{
-
-
-        subtotalBox.innerHTML =
-        "Rp0";
-
-
-    }
-
-
-});
-
-    
-    document
-    .getElementById("total")
-    .innerHTML =
-
-    rupiah(total);
-
-
-
-
-
-
-    document
-    .getElementById("jumlahKupon")
-    .innerHTML =
-
-    jumlahKupon;
-
-
-
-}
-
-
-
-
-
-
-
-function cekKaos(){
-
-
-
-    let rows =
-
-    document
-    .querySelectorAll(".kaos-row");
-
-
-
-
-    let last =
-
-    rows[rows.length-1];
-
-
-
-
-    let ukuran =
-
-    last
-    .querySelector(".ukuran")
-    .value;
-
-
-
-
-
-
-    if(
-
-        ukuran
-
-        &&
-
-        rows.length < 3
-
-    ){
-
-
-
-        let div =
-
-        document
-        .createElement("div");
-
-
-
-        div.className =
-        "kaos-row";
-
-
-
-        div.innerHTML = `
-
-
-<select
-class="sleeve"
-onchange="aktifkanUkuran(this)">
-
-
-<option value="">
-Lengan
-</option>
-
-
-<option value="pendek">
-Pendek
-</option>
-
-
-<option value="panjang">
-Panjang
-</option>
-
-
-</select>
-
-
-
-<select
-class="ukuran"
-onchange="aktifkanQty(this);cekKaos()"
-disabled>
-
-
-<option value="">
-Uk.
-</option>
-
-
-<option>M</option>
-
-<option>L</option>
-
-<option>XL</option>
-
-<option>2XL</option>
-
-<option>3XL</option>
-
-<option>4XL</option>
-
-
-</select>
-
-
-
-<input
-type="number"
-class="kaosQty"
-value="1"
-min="1"
-disabled
-oninput="hitungTotal()">
-
-
-
-<div class="subtotal">
-
-Rp0
-
-</div>
-
-
-`;
-
-
-
-
-        document
-        .getElementById("kaosContainer")
-        .appendChild(div);
-
-
-
-    }
-
-
-
-    hitungTotal();
-
-
-
-}
-
-
-
-
-
-
-document
-.getElementById("prostQty")
-.addEventListener(
-"input",
-hitungTotal
-);
-
-
-
-
-document
-.getElementById("laBoldQty")
-.addEventListener(
-"input",
-hitungTotal
-);
-
-
-
-
-
-document
-.getElementById("prostPrice")
-.innerHTML =
-
-rupiah(
-hargaProduk
-.prostBeer
-.harga
-);
-
-
-
-
-
-document
-.getElementById("laBoldPrice")
-.innerHTML =
-
-rupiah(
-hargaProduk
-.laBold16
-.harga
-);
-
-</script>
 
 
 <div class="total-box">
@@ -1457,24 +262,19 @@ Rp0
 </span>
 
 
-<div class="kupon-info">
+<br>
 
-Kamu akan mendapat
+
+Kupon:
 
 <span id="jumlahKupon">
 0
 </span>
 
-kupon undian
 
 </div>
 
 
-</div>
-
-<h2 style="color:red">
-TES MUNCUL
-</h2>
 
 <button type="submit">
 
@@ -1482,545 +282,37 @@ REGISTER
 
 </button>
 
-<div class="form-group">
+
+
+</form>
+
+
+
+<hr>
+
 
 <p>
 Sudah terdaftar?
 </p>
 
-<button 
-type="button"
-onclick="bukaLogin()">
 
-Masuk
-
-</button>
-
-</div>
-
-</form>
-    
-
-    
-</div>
-
-    
-</div>
-
-
-<div 
-id="loginBox"
-style="display:none">
-
-
-<h3>
-Masuk Peserta
-</h3>
-
-
-<div class="form-group">
-
-<label>
-Nomor WhatsApp
-</label>
-
-<input
-type="tel"
-id="loginWa"
-placeholder="08xxxxxxxxxx">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-PIN (6 angka)
-</label>
-
-<input
-type="password"
-id="loginPin"
-maxlength="6"
-inputmode="numeric"
-placeholder="PIN">
-
-</div>
-
-
-<button
-type="button"
-onclick="loginPeserta()">
+<button type="button">
 
 Masuk
 
 </button>
 
 
-<div id="hasilLogin"></div>
-
-
-
-<div id="hasilRegistrasi" style="display:none">
-
-<h2>
-Registrasi Berhasil
-</h2>
-
-
-<p>
-Nomor Registrasi:
-</p>
-
-<h1 id="hasilNomor">
-</h1>
-
-
-
-<p>
-Nama:
-</p>
-
-<h3 id="hasilNama">
-</h3>
-
-
-
-<p>
-Pembelian:
-</p>
-
-<div id="hasilPembelian">
-</div>
-
-
-
-<p>
-Total:
-</p>
-
-<h3 id="hasilTotal">
-</h3>
-
-
-
-<p>
-Kamu mendapat
-<span id="hasilJumlahKupon">
-</span>
-kupon undian
-</p>
-
-
-
-<p>
-Nomor Kupon:
-</p>
-
-<div id="hasilKupon">
-</div>
-
-
-</div>
-    
-
-<div class="footer">
-
-© Bold After Dark
-
-</div>
-
 
 </div>
 
 
 
 
-<script>
+<script src="harga.js"></script>
 
-function generateNomorRegistrasi(){
+<script src="app.js"></script>
 
-    let nomor;
-
-    let daftar =
-    JSON.parse(
-        localStorage.getItem("nomorRegistrasi")
-    ) || [];
-
-
-    do{
-
-
-        let huruf =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-
-        let kodeHuruf = "";
-
-
-        for(let i=0;i<2;i++){
-
-            kodeHuruf +=
-            huruf.charAt(
-                Math.floor(
-                    Math.random()*huruf.length
-                )
-            );
-
-        }
-
-
-
-        let kodeAngka =
-        Math.floor(
-            1000 +
-            Math.random()*9000
-        );
-
-
-
-        nomor =
-        kodeHuruf + "-" + kodeAngka;
-
-
-
-    }while(
-        daftar.includes(nomor)
-    );
-
-
-
-    daftar.push(nomor);
-
-
-
-    localStorage.setItem(
-        "nomorRegistrasi",
-        JSON.stringify(daftar)
-    );
-
-
-
-    return nomor;
-
-}
-
-
-function ambilDataPembelian(){
-
-    let pembelian = [];
-
-
-    let prostQty =
-    Number(
-        document.getElementById("prostQty").value
-    );
-
-
-    if(prostQty > 0){
-
-        pembelian.push({
-
-            produk:"Prost Beer",
-
-            jumlah:prostQty
-
-        });
-
-    }
-
-
-
-    let laBoldQty =
-    Number(
-        document.getElementById("laBoldQty").value
-    );
-
-
-    if(laBoldQty > 0){
-
-        pembelian.push({
-
-            produk:"LA Bold 16",
-
-            jumlah:laBoldQty
-
-        });
-
-    }
-
-
-
-
-    document
-    .querySelectorAll(".kaos-row")
-    .forEach(row=>{
-
-
-        let sleeve =
-        row.querySelector(".sleeve").value;
-
-
-        let ukuran =
-        row.querySelector(".ukuran").value;
-
-
-        let qty =
-        Number(
-            row.querySelector(".kaosQty").value
-        );
-
-
-
-        if(
-            sleeve &&
-            ukuran &&
-            qty > 0
-        ){
-
-            pembelian.push({
-
-                produk:
-                "Kaos "+
-                ukuran+
-                " "+
-                sleeve,
-
-                jumlah:qty
-
-            });
-
-        }
-
-
-    });
-
-
-
-    return pembelian;
-
-}
-
-
-function generateKupon(jumlah){
-
-    let kupon = [];
-
-
-    while(
-        kupon.length < jumlah
-    ){
-
-        let nomor =
-        Math.floor(
-            1000 +
-            Math.random()*9000
-        ).toString();
-
-
-
-        if(
-            !kupon.includes(nomor)
-        ){
-
-            kupon.push(nomor);
-
-        }
-
-    }
-
-
-    return kupon;
-
-}
-
-function tampilkanHasilRegistrasi(data){
-     document
-    .querySelector(".logo")
-    .style.display="none";
-    
-    document
-    .getElementById("registerForm")
-    .style.display="none";
-
-    document
-    .getElementById("hasilRegistrasi")
-    .style.display="block";
-
-    document
-    .getElementById("hasilNomor")
-    .innerHTML =
-    data.registrasi;
-
-    document
-    .getElementById("hasilNama")
-    .innerHTML =
-    data.nama;
-
-    document
-    .getElementById("hasilTotal")
-    .innerHTML =
-    data.total;
-
-    document
-    .getElementById("hasilJumlahKupon")
-    .innerHTML =
-    data.kupon;
-
-
-
-    let pembelianHTML = "";
-
-
-
-    data.pembelian.forEach(item=>{
-
-
-        pembelianHTML +=
-
-        "<div>"+
-        item.produk+
-        " x "+
-        item.jumlah+
-        "</div>";
-
-
-    });
-
-
-
-    document
-    .getElementById("hasilPembelian")
-    .innerHTML =
-    pembelianHTML;
-
-
-
-
-
-    let kuponHTML = "";
-
-
-
-    data.nomorKupon.forEach(nomor=>{
-
-
-        kuponHTML +=
-
-        "<div>"+
-        nomor+
-        "</div>";
-
-
-    });
-
-
-
-    document
-    .getElementById("hasilKupon")
-    .innerHTML =
-    kuponHTML;
-
-
-
-}
-    
-document
-.getElementById("registerForm")
-.addEventListener(
-"submit",
-function(e){
-
-
-    e.preventDefault();
-
-
-
-    let nama =
-
-    document
-    .getElementById("nama")
-    .value;
-
-
-
-    let wa =
-
-    document
-    .getElementById("wa")
-    .value;
-
-
-
-let nomorRegistrasi =
-generateNomorRegistrasi();
-
-
-let jumlahKupon =
-
-Number(
-    document
-    .getElementById("jumlahKupon")
-    .innerText
-);
-
-
-
-let dataPeserta = {
-
-    registrasi:
-    nomorRegistrasi,
-
-
-    nama:
-    nama,
-
-
-    whatsapp:
-    wa,
-
-
-    pembelian:
-    ambilDataPembelian(),
-
-
-    total:
-    document
-    .getElementById("total")
-    .innerText,
-
-
-    kupon:
-    jumlahKupon,
-
-
-    nomorKupon:
-    generateKupon(jumlahKupon)
-
-};
-
-console.log(dataPeserta);
-    tampilkanHasilRegistrasi(dataPeserta);
-
-
-
-});
-
-</script>
-
-</div>
-    
-<script>
-
-function bukaLogin(){
-
-  document.getElementById("loginBox")
-  .style.display="block";
-
-}
-
-
-</script>
 
 </body>
 
