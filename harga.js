@@ -1,4 +1,4 @@
-<script src="harga.js"></script>
+<script> src="harga.js"></script>
 
 <script>
 
