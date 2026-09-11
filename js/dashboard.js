@@ -1,38 +1,22 @@
-// =====================
-// GET PESERTA DATA
-// =====================
-
-
 const peserta = JSON.parse(
 
-    localStorage.getItem("peserta")
+localStorage.getItem("peserta")
 
 );
 
 
 
-
-// =====================
-// CHECK SESSION
-// =====================
-
-
 if(!peserta){
 
 
-    window.location.href =
-    "index.html";
+window.location.href =
+"index.html";
 
 
 }
 
 
 
-
-
-// =====================
-// DISPLAY NAME
-// =====================
 
 
 document.getElementById("nama")
@@ -45,11 +29,6 @@ document.getElementById("nama")
 
 
 
-// =====================
-// DISPLAY ID
-// =====================
-
-
 document.getElementById("id")
 
 .innerHTML =
@@ -58,11 +37,6 @@ peserta.id || "-";
 
 
 
-
-
-// =====================
-// DISPLAY TYPE
-// =====================
 
 
 document.getElementById("tipe")
@@ -75,30 +49,35 @@ document.getElementById("tipe")
 
 
 
-// =====================
-// GENERATE QR CODE
-// =====================
+document.getElementById("payment")
+
+.innerHTML =
+
+(peserta.pembayaran || "NOT PURCHASED").toUpperCase();
+
+
+
 
 
 new QRCode(
 
-    document.getElementById("qrcode"),
+document.getElementById("qrcode"),
 
-    {
-
-
-        text:
-
-        peserta.barcode || peserta.id,
+{
 
 
-        width:160,
+text:
+
+peserta.barcode || peserta.id,
 
 
-        height:160
+width:160,
 
 
-    }
+height:160
+
+
+}
 
 );
 
@@ -106,21 +85,18 @@ new QRCode(
 
 
 
-// =====================
-// LOGOUT
-// =====================
-
 
 function logout(){
 
 
-    localStorage.removeItem(
-        "peserta"
-    );
+localStorage.removeItem(
+"peserta"
+);
 
 
-    window.location.href =
-    "index.html";
+
+window.location.href =
+"index.html";
 
 
 }
