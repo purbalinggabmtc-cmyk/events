@@ -601,10 +601,18 @@ async function checkout(){
 
 
 
-        const result =
+       const text =
+await response.text();
 
-        await response.json();
 
+console.log(
+"SERVER RESPONSE:",
+text
+);
+
+
+const result =
+JSON.parse(text);
 
 
 
