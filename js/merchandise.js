@@ -373,8 +373,7 @@ document.getElementById("kupon")
 
 .innerHTML =
 
-kupon+" Nomor";
-
+"+" + kupon;
 
 
 }
