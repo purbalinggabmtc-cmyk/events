@@ -301,23 +301,32 @@ item.qty;
 
 html += `
 
-
 <div class="cart-item">
 
 
-<div>
+<div class="cart-info">
+
+
+<div class="cart-name">
 
 ${item.nama}
 
-<br>
+</div>
 
-<span>
+
+<div class="cart-qty">
+
 Qty: ${item.qty}
-</span>
+
+</div>
 
 
 </div>
 
+
+
+
+<div class="cart-right">
 
 
 <strong>
@@ -328,19 +337,22 @@ Rp${subtotal.toLocaleString()}
 
 
 
-<button onclick="removeItem(${index})">
+<button 
+class="remove-btn"
+onclick="removeItem(${index})">
 
 ×
 
-</button>
 
+</button>
 
 
 </div>
 
 
-`;
+</div>
 
+`;
 
 
 });
