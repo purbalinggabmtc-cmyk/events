@@ -1,5 +1,5 @@
 const API_URL =
-"https://script.google.com/macros/s/AKfycbx17qq0wtAR2b6KCwyASYRV6zszcLeDcXVKSmIKP7yJfwlp_Lkeha1e8HBxzrGqVCag/exec";
+"https://script.google.com/macros/s/AKfycbxBxxxxxxxxxxxxxxxx/exec";
 
 
 
@@ -8,27 +8,107 @@ document.getElementById("loginForm");
 
 
 
+
+// ==========================
+// NORMALISASI WHATSAPP
+// ==========================
+
+
+function formatWhatsApp(number){
+
+
+    number = number.replace(
+        /[^0-9]/g,
+        ""
+    );
+
+
+
+    if(number.startsWith("0")){
+
+
+        number =
+        "62" + number.substring(1);
+
+
+    }
+
+
+
+    return number;
+
+
+}
+
+
+
+
+
+
 form.addEventListener(
+
 "submit",
+
 async function(e){
+
 
 
 e.preventDefault();
 
-const whatsapp =
-document.getElementById("whatsapp").value.trim();
-
-
-const pin =
-document.getElementById("pin").value.trim();
 
 
 
-if(!/^[0-9]+$/.test(whatsapp)){
+
+// ==========================
+// AMBIL INPUT
+// ==========================
+
+
+let whatsapp =
+
+document.getElementById("whatsapp")
+.value
+.trim();
+
+
+
+
+let pin =
+
+document.getElementById("pin")
+.value
+.trim();
+
+
+
+
+
+
+// ==========================
+// FORMAT WA
+// ==========================
+
+
+whatsapp =
+formatWhatsApp(whatsapp);
+
+
+
+
+
+
+// ==========================
+// VALIDASI
+// ==========================
+
+
+if(
+!/^62[0-9]{9,13}$/.test(whatsapp)
+){
 
 
 alert(
-"Nomor WhatsApp hanya boleh angka"
+"Nomor WhatsApp tidak valid"
 );
 
 
@@ -39,7 +119,11 @@ return;
 
 
 
-if(!/^[0-9]{6}$/.test(pin)){
+
+
+if(
+!/^[0-9]{6}$/.test(pin)
+){
 
 
 alert(
@@ -52,8 +136,15 @@ return;
 
 }
 
-console.log("LOGIN BUTTON CLICKED");
 
+
+
+
+
+
+// ==========================
+// DATA LOGIN
+// ==========================
 
 
 const data = {
@@ -62,19 +153,25 @@ const data = {
 action:"login",
 
 
-whatsapp:
-document.getElementById("whatsapp").value.trim(),
+whatsapp:whatsapp,
 
 
-pin:
-document.getElementById("pin").value.trim()
+pin:pin
 
 
 };
 
 
 
-console.log("DATA KIRIM:", data);
+
+
+
+console.log(
+"LOGIN DATA:",
+data
+);
+
+
 
 
 
@@ -83,15 +180,22 @@ console.log("DATA KIRIM:", data);
 try{
 
 
-const response = await fetch(
+const response =
+
+await fetch(
 
 API_URL,
 
 {
 
+
 method:"POST",
 
-body:JSON.stringify(data)
+
+body:
+
+JSON.stringify(data)
+
 
 }
 
@@ -100,32 +204,19 @@ body:JSON.stringify(data)
 
 
 
-console.log(
-"STATUS SERVER:",
-response.status
-);
-
-
-
-const text =
-await response.text();
-
-
-
-console.log(
-"SERVER RESPONSE:",
-text
-);
-
 
 
 const result =
-JSON.parse(text);
+
+await response.json();
+
+
+
 
 
 
 console.log(
-"HASIL LOGIN:",
+"LOGIN RESULT:",
 result
 );
 
@@ -133,12 +224,9 @@ result
 
 
 
-if(result.sukses === true){
 
 
-console.log(
-"LOGIN BERHASIL"
-);
+if(result.sukses){
 
 
 
@@ -147,7 +235,9 @@ localStorage.setItem(
 "peserta",
 
 JSON.stringify(
+
 result.peserta
+
 )
 
 );
@@ -155,14 +245,10 @@ result.peserta
 
 
 
-console.log(
-"SIMPAN LOCAL STORAGE"
-);
-
-
 
 
 window.location.href =
+
 "dashboard.html";
 
 
@@ -172,7 +258,9 @@ window.location.href =
 else{
 
 
-alert(result.pesan);
+alert(
+result.pesan
+);
 
 
 }
@@ -180,14 +268,13 @@ alert(result.pesan);
 
 
 }
+
+
 
 catch(error){
 
 
-console.error(
-"ERROR LOGIN:",
-error
-);
+console.error(error);
 
 
 alert(
