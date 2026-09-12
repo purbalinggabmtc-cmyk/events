@@ -404,3 +404,291 @@ updateCart();
 
 
 }
+
+
+// ==========================
+// CHECKOUT
+// ==========================
+
+
+async function checkout(){
+
+
+
+    if(cart.length === 0){
+
+
+        alert(
+            "Belum ada pesanan"
+        );
+
+
+        return;
+
+
+    }
+
+
+
+
+
+    const peserta = JSON.parse(
+
+        localStorage.getItem("peserta")
+
+    );
+
+
+
+
+
+    if(!peserta){
+
+
+        alert(
+            "Silakan login kembali"
+        );
+
+
+        window.location.href =
+        "index.html";
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+
+    let total = 0;
+
+
+    let kupon = 0;
+
+
+    let detail = [];
+
+
+
+
+
+    cart.forEach(item => {
+
+
+
+        total +=
+
+        item.harga * item.qty;
+
+
+
+
+
+        kupon +=
+
+        item.kupon * item.qty;
+
+
+
+
+
+        detail.push(
+
+            `${item.nama} x${item.qty}`
+
+        );
+
+
+
+    });
+
+
+
+
+
+
+
+    const konfirmasi = confirm(
+
+
+        `Konfirmasi Pembelian\n\n` +
+
+        detail.join("\n") +
+
+        `\n\nTotal: Rp${total.toLocaleString()}` +
+
+        `\nLucky Draw: +${kupon}`
+
+
+    );
+
+
+
+
+
+
+    if(!konfirmasi){
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+
+    const data = {
+
+
+        action:"checkout",
+
+
+        id:peserta.id,
+
+
+        merch:detail.join(", "),
+
+
+        total:total,
+
+
+        kupon:kupon
+
+
+    };
+
+
+
+
+
+
+    try{
+
+
+
+        const response =
+
+        await fetch(
+
+            API_URL,
+
+            {
+
+
+                method:"POST",
+
+
+                body:
+
+                JSON.stringify(data)
+
+
+            }
+
+        );
+
+
+
+
+
+
+        const result =
+
+        await response.json();
+
+
+
+
+
+
+
+        console.log(
+
+            "CHECKOUT RESULT",
+
+            result
+
+        );
+
+
+
+
+
+
+
+        if(result.sukses){
+
+
+
+            alert(
+
+                "Checkout berhasil"
+
+            );
+
+
+
+
+
+            cart = [];
+
+
+
+            updateCart();
+
+
+
+
+
+        }
+
+        else{
+
+
+
+            alert(
+
+                result.pesan
+
+            );
+
+
+        }
+
+
+
+
+
+
+    }
+
+    catch(error){
+
+
+
+        console.error(error);
+
+
+
+        alert(
+
+            "Checkout gagal"
+
+        );
+
+
+
+    }
+
+
+
+}
