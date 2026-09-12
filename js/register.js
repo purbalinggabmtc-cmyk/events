@@ -67,7 +67,7 @@ whatsapp.startsWith("0")
 ){
 
     whatsapp =
-    "62" + whatsapp.substring(1);
+    "62" + whatsapp.substring(2);
 
 }
 
