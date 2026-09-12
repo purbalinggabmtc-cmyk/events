@@ -80,7 +80,7 @@ if(
 
 
 alert(
-"Nomor WhatsApp tidak valid"
+"Nomor WhatsApp tidak valid."
 );
 
 
