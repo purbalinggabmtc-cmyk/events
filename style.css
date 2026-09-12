@@ -1220,3 +1220,48 @@ color:white;
 font-size:16px;
 
 }
+
+/* =========================
+   ORDER SUMMARY
+========================= */
+
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:15px;
+
+    padding:8px 0;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+
+
+.summary-row strong{
+
+    color:#d1121f;
+
+    font-size:18px;
+
+    font-weight:800;
+
+}
+
+
+
+.summary-row span{
+
+    color:white;
+
+}
